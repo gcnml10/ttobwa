@@ -1,0 +1,1750 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="google-site-verification" content="Y_RPA0alghgjFbflARETfV8XDtIT4uf201-tbcFEGvI"/>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+
+        <meta name="google-signin-client_id"
+              content="541380955209-u98c1pj6mqllfodke8ss9poedn4bjl7o.apps.googleusercontent.com">
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- jQuery -->
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <!-- BS JavaScript -->
+        <script type="text/javascript" src="js/bootstrap.js"></script>
+
+
+        <!-- Bootstrap CSS -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+                integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+                crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"
+                integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
+                crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+              crossorigin="anonymous">
+        <!-- JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+
+        <!-- 구글폰트 -->
+        <link href="https://fonts.googleapis.com/css2?family=Jua&family=Nanum+Gothic&family=Noto+Sans&display=swap"
+              rel="stylesheet">
+
+        <!--        ogtag -->
+        <meta property="og:title" content="또봐학원_유튜브_영어강의_영어회화/복습"/>
+        <meta property="og:description"
+              content='많은 유튜브 영어강의의 영어회화 공부/복습 사이트입니다. 다른 사람들과 서로 문장을 공유하면서 영어실력을 성장시키세요'/>
+        <meta property="og:image" content="{{ url_for('static', filename='ogimage_1.jpg') }}"/>
+        <meta name="google-site-verification" content="PpZMg1u1PMHzdbz6cclg1EQlGyfK8IbLNRjUQxkwUPo" />
+
+
+        <title>또봐?! 유튜브 영어강의 복습하자!</title>
+
+        <style>
+            @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@1.0/nanumsquare.css);
+
+            * {
+                font-family: 'Noto Sans', 'Nanum Gothic';
+            }
+
+            #box_icon {
+                width: 18px;
+                height: 70px;
+                background: linear-gradient(to bottom, #efef71 20%, #4fdb3f, #6fbde2, #1d71ef);
+            }
+
+            #box_icon2 {
+                width: 18px;
+                height: 70px;
+                background: linear-gradient(to bottom, #bfcde8 3%, #1e3d6f 40%, #193055 57%);
+            }
+
+            .desc {
+                background: linear-gradient(to right, #d4e3e7 50%, #226128 50%);
+                background-size: 200%;
+                transition: 1s;
+                font-size: 21px;
+                border-radius: 8px;
+                color: #d4e3e7;
+
+            }
+
+            .desc:hover {
+                background-position: -100% 0;
+
+            }
+
+            .hover_at_entire {
+                cursor: pointer;
+                background-color: lightblue;
+            }
+
+            /*.hover_text:hover {*/
+            /*    background-color: lightblue;*/
+            /*    cursor: pointer;*/
+            /*}*/
+
+
+            .nav-link {
+                cursor: pointer;
+            }
+
+            .engbox {
+                color: white;
+            }
+
+            .input_box {
+                width: 600px;
+            }
+
+            #jb {
+                color: white;
+            }
+
+            .selected {
+                color: #dedc2c;
+                background: #2c951a;
+            }
+
+            input[type='radio'] {
+                display: none;
+            }
+
+            input[type='radio']:checked + li {
+                background: lightblue;
+                color: black
+            }
+
+            .conbox {
+                max-width: 1000px;
+                /*max-height: 600px;*/
+                margin-top: 5%;
+                margin-left: 10%;
+                margin-right: 30%;
+                width: 90%;
+                height: 90%;
+                display: none;
+                position: relative;
+                border-style: solid;
+                border-color: black;
+                border-radius: 10px;
+                padding: 50px;
+
+
+                /*left: 100px;*/
+                /*top: 50px;*/
+            }
+
+            .conbox.con4 {
+                margin: auto;
+                margin-top: 5%;
+                min-height: 1500px;
+                max-height: 100%;
+                margin-right: 30px;
+                /*border-bottom: none;*/
+                border-radius: 0;
+                /*width: 1000px;*/
+                max-width: 97%;
+                /*position: relative;*/
+                /*float: left;*/
+            }
+
+            .btn_loca {
+                position: fixed;
+                right: 2%;
+                top: 15%;
+                border: 0;
+                outline: 0;
+                /*background-color: #000;*/
+                filter: Alpha(Opacity=65);
+            }
+
+            .btn_image {
+                width: 50px;
+                height: auto;
+                border: 0;
+                outline: 0;
+                cursor: pointer;
+                /*background-color: #000;*/
+                filter: Alpha(Opacity=65);
+            }
+
+            .conin5 {
+                float: left;
+                display: inline;
+                position: relative;
+            }
+
+            .btn btn-outline-secondary {
+
+            }
+
+
+        </style>
+        <script>
+            $(document).ready(function () {
+                show(1)
+                // post_video()
+            })
+
+            function refresh() {
+                window.location.reload();
+            }
+
+            function onSignIn(googleUser) {
+                var profile = googleUser.getBasicProfile();
+                console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+                console.log('Name: ' + profile.getName());
+                console.log('Image URL: ' + profile.getImageUrl());
+                console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            }
+
+            document.cookie = 'same-site-cookie=foo; SameSite=Lax';
+            document.cookie = 'cross-site-cookie=bar; SameSite=None; Secure';
+
+            function checkLoginStatus() {
+                var loginBtn = document.querySelector('#loginBtn');
+                var nameTxt = document.querySelector('#name')
+                if (gauth.isSignedIn.get()) {
+                    console.log('logined')
+                    loginBtn.value = 'Logout';
+                    var profile = gauth.currentUser.get().getBasicProfile();
+                    console.log(profile.getName())
+                    console.log(profile.getId())
+                    window.userID = profile.getId()
+                    nameTxt.innerHTML = 'Welcome <strong>' + profile.getName() + '</strong> '
+                    credits()
+                } else {
+                    console.log('logouted')
+                    loginBtn.value = 'Login'
+                    nameTxt.innerHTML = ''
+                }
+            }
+
+            //https://console.cloud.google.com/home/dashboard?project=modern-photon-287113&supportedpurview=project
+            // Google Sign-In JavaScript client reference
+            function init() {
+                gapi.load('auth2', function () {
+                    console.log('auth2')
+                    window.gauth = gapi.auth2.init({
+                        client_id: '541380955209-u98c1pj6mqllfodke8ss9poedn4bjl7o.apps.googleusercontent.com'
+                    })
+                    gauth.then(function () {
+                        console.log('googleAuth Succcess')
+                        checkLoginStatus();
+                    }, function () {
+                        console.log('googleAuth fail');
+
+                    })
+                    /* Ready. Make a call to gapi.auth2.init or some other API */
+                });
+            }
+
+
+            function Score() {
+                let eng_test = $('#eng_box').text()
+                let answer1 = $('#input_box').val()
+                $.ajax({
+                    type: 'POST',
+                    url: '/score',
+                    data: {'answer': answer1, 'eng_test': eng_test},
+                    success: function (response) {
+                        score_this = response['score']
+                        alert(score_this)                       //(score_this + '% 일치합니다!')
+                    }
+                })
+            }
+
+            function Score2() {
+                let eng_test = $('#eng_box2').text()
+                let answer1 = $('#input_box2').val()
+                $.ajax({
+                    type: 'POST',
+                    url: '/score',
+                    data: {'answer': answer1, 'eng_test': eng_test},
+                    success: function (response) {
+                        score_this = response['score']
+                        alert(score_this)                       //(score_this + '% 일치합니다!')
+                    }
+                })
+            }
+
+            // let score = $('.input_box').val().trim()
+            // let jb = $('#eng_box').text().trim()
+            // answer = list($('.input_box').val().split())
+            // score_it = 0
+            // for (let i=0; i<eng_sen.length;i++)
+            //     correct_word = eng_sen[i]
+            //     for (let i=0; i<answer.length;i++)
+            //         answer_word = answer[i]
+            //         if (correct_word == answer_word) {
+            //             score_it +=1
+            //         }
+            // return score_it
+            // console.log(score_it)
+            //     if (score == jb) {
+            //         alert('정답입니다!')
+            //     } else {
+            //         alert(`다시한번!`)
+            //     }
+            // }
+
+
+            // function Gage() {
+            //     document.getElementById('jb').value = $('#jb').val() + 20;
+            //     document.getElementById('jb').textContent = $('#jb').val() + '%';
+            //
+            //
+            // }
+
+            var gage = 0
+            var count_today = 0;
+
+            function Gage1() {
+                gage += 10
+                $('#jb1').attr('style', 'width: ' + gage + "%")
+                $('#jb1').text('' + gage + "%")
+                count_today += 1
+                $('#today_count').html(count_today)
+
+            }
+
+            function Count1() {
+                $('#btn1').toggleClass('selected')
+            }
+
+            function Count2() {
+                $('#btn2').toggleClass('selected')
+            }
+
+            function Count3() {
+                $('#btn3').toggleClass('selected')
+            }
+
+            function Count4() {
+                $('#btn4').toggleClass('selected')
+            }
+
+            function Count5() {
+                $('#btn5').toggleClass('selected')
+            }
+
+            function Count6() {
+                $('#btn6').toggleClass('selected')
+            }
+
+            function Count7() {
+                $('#btn7').toggleClass('selected')
+            }
+
+            $('#exampleModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget) // Button that triggered the modal 이건 뭐지
+                var recipient = button.data('whatever') // Extract info from data-* attributes 위에꺼랑 같이 쓸모 없는듯
+                // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+                // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+                var modal = $(this)
+
+
+            })
+
+            function post_sentance(ids) {
+                console.log(ids)
+                korean_input = $('#kor-text').val()
+                eng_input = $('#eng-text').val()
+                reference = $('#reference').val()
+                if (korean_input == '') {
+                    alert('한국어 문장을 입력해주세요')
+                    $('#kor-text').focus()
+                    return;
+                } else if (eng_input == '') {
+                    alert('영어 문장을 입력해주세요')
+                    $('#eng-text').focus()
+                    return;
+                } else {
+                    korean_input_3 = $('#kor-text').val()
+                    eng_input_3 = $('#eng-text').val()
+                    reference_3 = $('#reference').val()
+                }
+                console.log(ids)
+                $.ajax({
+                    type: 'POST',
+                    url: '/sentanceinput',
+                    data: {
+                        'korean_give': korean_input_3,
+                        'eng_give': eng_input_3,
+                        'userID': userID,
+                        'reference_give': reference_3,
+                        'ids': ids
+                    },
+                    success: function (response) {
+                        alert(response['msg'])
+
+                    }
+                })
+
+            }
+
+
+            function post_sentance2() {
+                korean_input2 = $('#kor-text2').val()
+                eng_input2 = $('#eng-text2').val()
+                reference2 = $('#reference2').val()
+                memo = $('#memo2').val()
+                if (korean_input2 == '') {
+                    alert('한국어 문장을 입력해주세요')
+                    $('#kor-text2').focus()
+                    return;
+                } else if (eng_input2 == '') {
+                    alert('영어 문장을 입력해주세요')
+                    $('#eng-text2').focus()
+                    return;
+                } else {
+                    korean_input_3 = $('#kor-text2').val()
+                    eng_input_3 = $('#eng-text2').val()
+                    reference_3 = $('#reference2').val()
+                }
+                console.log(userID)
+                $.ajax({
+                    type: 'POST',
+                    url: '/sentanceinput',
+                    data: {
+                        'korean_give': korean_input_3,
+                        'eng_give': eng_input_3,
+                        'userID': userID,
+                        'reference_give': reference_3,
+                        'ids': '0',
+                        'memo': memo
+                    },
+                    success: function (response) {
+                        alert(response['msg'])
+                        $('#kor-text2').val('')
+                        $('#eng-text2').val('')
+                        $('#reference2').val('')
+                        $('#memo2').val('')
+
+                    }
+                })
+            }
+
+            function post_sentance_in_entire(ids, num) {
+                korean_input_3 = $('#kor-text' + num).val()
+                eng_input_3 = $('#eng-text' + num).val()
+                reference_3 = $('#reference' + num).val()
+                memo_3 = $('#memo_edit' + num).val()
+                console.log(ids)
+                $.ajax({
+                    type: 'POST',
+                    url: '/sentanceinput_in_entire',
+                    data: {
+                        'korean_give': korean_input_3,
+                        'eng_give': eng_input_3,
+                        'userID': userID,
+                        'reference_give': reference_3,
+                        'memo_give': memo_3,
+                        'id': ids
+                    },
+                    success: function (response) {
+                        alert(response['msg'])
+                        // entire_list();
+                        // except_list();
+
+                    }
+                })
+
+            }
+
+            function post_sentance_in_except(ids, num) {
+                korean_input_3 = $('#kor1-text' + num).val()
+                eng_input_3 = $('#eng1-text' + num).val()
+                reference_3 = $('#r1eference' + num).val()
+                memo_3 = $('#m1emo_edit' + num).val()
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/sentanceinput_in_entire',
+                    data: {
+                        'korean_give': korean_input_3,
+                        'eng_give': eng_input_3,
+                        'userID': userID,
+                        'reference_give': reference_3,
+                        'memo_give': memo_3,
+                        'id': ids
+                    },
+                    success: function (response) {
+                        alert(response['msg'])
+                        $('#exampleModal9' + num).modal('hide');
+                        // entire_list();
+                        // except_list();
+
+                    }
+                })
+
+            }
+
+            let eng_sen = ''
+
+            function next_sen() {
+                $('#questionbox').html('')
+                let tempHtml = `<div style="margin-bottom: 10px" id="kor-box"></div>
+                                        <div id='eng_box' style="width: 100%; word-wrap: break-word" class="engbox"><span class="can"></span>
+                                        </div>`
+                $('#questionbox').append(tempHtml)
+                $.ajax({
+                    type: 'POST',
+                    url: '/sentanceget',
+                    async: false,
+                    data: {'userID': userID},
+                    success: function (response) {
+                        console.log(response['korean'])
+                        $('.input_box').empty()
+                        let current_sentance = response['send_sen']
+                        let kor_sen = current_sentance['korean']
+                        let reference = current_sentance['reference']
+                        var ids = current_sentance['_id']
+                        console.log(ids)
+                        eng_sen = current_sentance['eng']
+
+                        $('#kor-box').append(kor_sen)
+                        //let tempHtml = `<div id="kor-box"> ${kor_sen}</div>
+                        //<div id='eng_box' class="engbox"><span class="desc"></span>
+                        //</div>`
+                        //$('#questionbox').append(tempHtml)
+
+                        var num = 0
+                        for (let i = 0; i < eng_sen.length; i++) {
+                            let eng_word = eng_sen[i]
+                            num += 1
+                            let word = `<span class="desc" style="white-space:nowrap;" class="back_radius" id="word_${num}">&nbsp;${eng_word}&nbsp&nbsp</span><span>&nbsp&nbsp</span>`
+                            $('.can').append(word)
+                        }
+                        let test = ''
+                        for (let i = 0; i < eng_sen.length; i++) {
+                            test += eng_sen[i] + ' '
+                        }
+
+
+                        var count = $('.count_group');
+                        var count_score = current_sentance['count']
+                        count.find('button').removeClass('selected')
+                        count.find('button:nth-child(-n+' + count_score + ')').addClass('selected')
+
+                        let canthelp = `<!--<div><input class="input_box" type="text"></div>-->
+                                         <div style="margin-top: 20px" class="form-group"><textarea class="form-control" id="input_box" id="" cols="30" rows="2"></textarea></div>
+                                        <div>
+                                            <button class="btn btn-outline-secondary" onclick="Score()">정답 확인</button>
+                                            <button class="btn btn-outline-secondary" onclick="count_up('${ids}'); Gage1()">완료</button>
+                                            <button class="btn btn-outline-secondary" onclick="next_sen()">다음문제</button>
+                                            <button class="btn btn-outline-secondary" onclick="count_reset('${ids}')">횟수 초기화</button>
+                                            <button class="btn btn-outline-secondary" onclick="day_workload()">오늘 학습량 저장하기</button>
+                                            <button class="btn btn-outline-secondary" onclick="show_eng()">영어 문장 보기</button>
+                                        </div>
+                                        <div>
+                        <u><span style="width: 90%; max-width: 300px float:left;margin-right: 10px; margin-top: 16px;">&nbsp;출처:&nbsp;${reference}</span></u>
+                        <span><a style="margin-top: 17px; height: 20px; font-size: 14px; font-weight: lighter" href="#"
+                                 class="badge badge-info" onclick=" function f(event) {}"
+                                 class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3"
+                                 data-whatever="@mdo">문제 수정</a></span>
+                        <div class="modal fade" id="exampleModal3" tabindex="-1" aria-labelledby="exampleModalLabel3"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel3">문장 입력</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="kor-text" class="col-form-label">한국어</label>
+                                                <textarea class="form-control" id="kor-text">${kor_sen}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eng-text" class="col-form-label">영어</label>
+                                                <textarea class="form-control" id="eng-text">${test}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eng-text" class="col-form-label">출처</label>
+                                                <textarea class="form-control" id="reference"
+                                                          style="height: 50px">${reference}</textarea>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id='click' class="btn btn-secondary" data-dismiss="modal">뒤로가기
+                                        </button>
+                                        <button type="button" onclick="post_sentance('${ids}')" class="btn btn-primary">수정하기
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>`
+                        $('#nochoice').html('')
+                        $('#nochoice').append(canthelp)
+                        let memo = current_sentance['memo']
+                        $('#memogo').val(memo)
+
+                    }
+                })
+
+            }
+
+            function count_up(ids) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/countup',
+                    data: {'countup_give': ids, 'userID': userID},
+                    success: function (response) {
+                        var count = $('.count_group');
+                        let new_count = response['new_count']
+                        count.find('button').removeClass('selected')
+                        count.find('button:nth-child(-n+' + new_count + ')').addClass('selected')
+                        alert(response['msg'])
+                    }
+                })
+
+            }
+
+            function count_reset(ids) {
+                $.ajax({
+                    type: 'POST',
+                    url: '/countreset',
+                    data: {'countreset_give': ids, 'userID': userID},
+                    success: function (response) {
+                        var count = $('.count_group');
+                        let new_count = response['new_count']
+                        count.find('button').removeClass('selected')
+                        count.find('button:nth-child(-n+' + new_count + ')').addClass('selected')
+                        alert(response['msg'])
+
+                    }
+                })
+
+
+            }
+
+            function day_workload() {
+                let day_workoad = $('#today_count').text()
+                $.ajax({
+                    type: 'POST',
+                    url: '/workload',
+                    data: {'workoad_give': day_workoad, 'userID': userID},
+                    success: function (response) {
+                        let workload = response['msg']
+                        alert(workload)
+                        gage = 0
+                        count_today = 0;
+
+                    }
+                })
+
+
+            }
+
+            function hover_text(id) {
+                kor = $("#en_korean" + id).text()
+                console.log(kor)
+
+            }
+
+            // $('.hover_text').click(function (id) {
+            //     kor = $("#en_korean"+id).text()
+            //     kor = $(this).find('en_korean').text();
+            //     console.log(kor);
+            // });   //포기!!!!!!!!!!!!!!!!!!!!!!
+
+            function entire_list() {
+                console.log(userID)
+                $.ajax({
+                    type: 'POST',
+                    url: '/entire_list',
+                    data: {'userID': userID},
+                    success: function (response) {
+                        let entire_list = response['list']
+                        console.log(entire_list)
+                        $('#entire_list').html('')
+                        for (let i = 0; i < entire_list.length; i++) {
+                            let en_korean = entire_list[i]['korean']
+                            let en_eng = entire_list[i]['eng']
+                            let memo = entire_list[i]['memo']
+                            let reference = entire_list[i]['reference']
+                            let id = entire_list[i]['_id']
+                            let test = ''
+                            for (let i = 0; i < en_eng.length; i++) {
+                                test += en_eng[i] + ' '
+                            }
+                            let en_count = entire_list[i]['count']
+                            let count = i + 1
+                            let count2 = i
+                            console.log(count2)
+                            let tempHtml = `<tr>
+                                            <th scope="row">${count}</th>
+                                            <td class='hover_in_entire'><span id="en_korean${count2}">${en_korean}</span>
+                                            <br style="margin-top: 5px">${test}</td>
+                                            <td>${en_count}</td>
+
+                                            <td><div class="custom-control custom-checkbox">
+                                            <input name ='checkboxes' type="checkbox" id="jb-checkbox${count}" class="custom-control-input">
+                                            <label class="custom-control-label" for="jb-checkbox${count}">Checkbox</label>
+                                            </div></td>
+                                            </tr>
+                                            <tr><td></td><td>메모: ${memo}</td></tr>
+                                            <tr><td></td><td style="height: 20px;white-space:nowrap">출처: <span id="reference_in_entire" style="margin-right: 5px">${reference}</span><span>
+                                            <a style="margin-top: 17px; height: 20px; font-size: 14px; font-weight: lighter" href="#"
+                                 class="badge badge-info" onclick="function f(event) {}"
+                                 class="btn btn-primary" data-toggle="modal" data-target="#exampleModal7${count2}"
+                                 data-whatever="@mdo">수정</a></span><span>
+                        <a style="margin-top: 17px; margin-right: 5px height: 20px; font-size: 14px; font-weight: lighter" href="#"
+                                 class="badge badge-warning" onclick="delete_real('${id}')"
+                                 >삭제</a></span>
+                        <div class="modal fade" id="exampleModal7${count2}" tabindex="-1" aria-labelledby="exampleModalLabel7${count2}"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel7${count2}">문장 입력</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="kor-text" class="col-form-label">한국어</label>
+                                                <textarea class="form-control" id="kor-text${count2}">${en_korean}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eng-text" class="col-form-label">영어</label>
+                                                <textarea class="form-control" id="eng-text${count2}">${test}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eng-text" class="col-form-label">출처</label>
+                                                <textarea class="form-control" id="reference${count2}"
+                                                          style="height: 50px">${reference}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eng-text" class="col-form-label">메모</label>
+                                                <textarea class="form-control" id="memo_edit${count2}">${memo}</textarea>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" id="click2" class="btn btn-secondary" data-dismiss="modal">뒤로가기
+                                        </button>
+                                        <button type="button" onclick="post_sentance_in_entire('${id}','${count2}')" class="btn btn-primary">저장하기
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </td>
+                        </tr>`
+                            $('#entire_list').append(tempHtml)
+
+                        }
+                    }
+                })
+            }
+
+            function except_list() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/except_list',
+                    data: {'userID': userID},
+                    success: function (response) {
+                        let except_list = response['list']
+                        $('#except_list').html('')
+                        for (let i = 0; i < except_list.length; i++) {
+                            let en_korean = except_list[i]['korean']
+                            let en_eng = except_list[i]['eng']
+                            let memo = except_list[i]['memo']
+                            let reference = except_list[i]['reference']
+                            let id = except_list[i]['_id']
+                            let test = ''
+                            for (let i = 0; i < en_eng.length; i++) {
+                                test += en_eng[i] + ' '
+                            }
+                            let en_count = except_list[i]['count']
+                            let count = i + 1
+                            let count2 = i
+                            console.log(count2)
+                            let tempHtml = `<tr>
+                                            <th scope="row">${count}</th>
+                                            <td class='hover_in_entire'><span id="en1_korean${count2}">${en_korean}</span>
+                                            <br style="margin-top: 5px;">${test}</td>
+                                            <td>${en_count}</td>
+
+                                            <td><div class="custom-control custom-checkbox">
+                                            <input name ='checkboxes_return' type="checkbox" id="jb1-checkbox${count}" class="custom-control-input">
+                                            <label class="custom-control-label" for="jb1-checkbox${count}">Checkbox</label>
+                                            </div></td>
+                                            </tr>
+                                            <tr><td></td><td>메모: ${memo}</td></tr>
+                                            <tr ><td></td><td style="height: 20px;white-space:nowrap">출처: <span style="margin-right: 5px" id="reference_in_entire">${reference}</span><span><a style="margin-top: 17px; height: 20px; font-size: 14px; font-weight: lighter" href="#"
+                                 class="badge badge-info" onclick="function f(event) {}"
+                                 class="btn btn-primary" data-toggle="modal" data-target="#exampleModal9${count2}"
+                                 data-whatever="@mdo">수정</a></span><span>
+                        <a style="margin-top: 17px; margin-right: 5px height: 20px; font-size: 14px; font-weight: lighter" href="#"
+                                 class="badge badge-warning" onclick="delete_real('${id}')"
+                                 >삭제</a></span>
+                        <div class="modal fade" id="exampleModal9${count2}" tabindex="-1" aria-labelledby="exampleModalLabel9${count2}"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel9${count2}">문장 입력</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form>
+                                            <div class="form-group">
+                                                <label for="kor-text" class="col-form-label">한국어</label>
+                                                <textarea class="form-control" id="kor1-text${count2}">${en_korean}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eng-text" class="col-form-label">영어</label>
+                                                <textarea class="form-control" id="eng1-text${count2}">${test}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eng-text" class="col-form-label">출처</label>
+                                                <textarea class="form-control" id="r1eference${count2}"
+                                                          style="height: 50px">${reference}</textarea>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="eng-text" class="col-form-label">메모</label>
+                                                <textarea class="form-control" id="m1emo_edit${count2}">${memo}</textarea>
+                                        </form>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">뒤로가기
+                                        </button>
+                                        <button type="button" onclick="post_sentance_in_except('${id}','${count2}')" class="btn btn-primary">저장하기
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        </td>
+                        </tr>`
+                            $('#except_list').append(tempHtml)
+
+                        }
+                    }
+                })
+            }
+
+
+            function delete_sen() {
+                let count = 0;
+                let delete_list = [];
+                for (let i = 0; i < $('input:checkbox[name=checkboxes]').length; i++) {
+                    count += 1
+                    let checking_id = "jb-checkbox" + (i + 1)
+                    let checking = $("input:checkbox[id=" + checking_id + "]").is(":checked")
+                    console.log("checking", checking)
+                    if (checking == true) {
+                        console.log($('#en_korean' + i).text())
+                        delete_list.push($('#en_korean' + i).text())
+                    }
+                }
+                if (delete_list.length == 0) {
+                    alert("제외할 항목을 선택해주세요")
+                    return
+                }
+                console.log(delete_list)
+                test = JSON.stringify(delete_list)
+                console.log(test)
+                $.ajax({
+                    type: 'POST',
+                    url: '/deletelist',
+                    data: {'delete_list': test, 'userID': userID},
+                    success: function (response) {
+                        alert(response['msg'])
+                        entire_list();
+                        except_list();
+
+                    }
+                })
+
+
+            }
+
+            function return_sen() {
+                let count = 0;
+                let return_list = [];
+                for (let i = 0; i < $('input:checkbox[name=checkboxes_return]').length; i++) {
+                    count += 1
+                    let checking_id = "jb1-checkbox" + (i + 1)
+                    let checking = $("input:checkbox[id=" + checking_id + "]").is(":checked")
+                    console.log("checking", checking)
+                    if (checking == true) {
+                        console.log($('#en1_korean' + i).text())
+                        return_list.push($('#en1_korean' + i).text())
+                    }
+                }
+                if (return_list.length == 0) {
+                    alert("다시 학습할 항목을 선택해주세요")
+                    return
+                }
+                console.log(return_list)
+                test = JSON.stringify(return_list)
+                console.log(test)
+                $.ajax({
+                    type: 'POST',
+                    url: '/returnlist',
+                    data: {'return_list': test, 'userID': userID},
+                    success: function (response) {
+                        alert(response['msg'])
+                        entire_list();
+                        except_list();
+
+                    }
+                })
+            }
+
+            function memogo() {
+                let memo = $('#memogo').val()
+                let kor = $('#kor-box').text()
+                $.ajax({
+                    type: 'POST',
+                    url: '/memo',
+                    data: {'memo': memo, 'kor': kor, 'userID': userID},
+                    success: function (response) {
+                        let msg = response['msg']
+                        alert(msg)
+                    }
+                })
+
+            }
+
+            function whole_sentance() {
+                var userID = ''
+                console.log(userID)
+                // if (userID = undefined) {
+                //     return userID=1
+                // }
+                $('#questionbox2').html('')
+                let tempHtml = `<div id = "kor-box2" style="margin-bottom: 10px"></div>
+                                <div id = 'eng_box2' style="width: 100%; word-wrap: break-word" class= "engbox">
+                                    <span class= "can2"></span>
+                                </div>`
+                $('#questionbox2').append(tempHtml)
+                $.ajax({
+                    type: 'POST',
+                    url: '/wholesentanceget',
+                    async: false,
+                    data: {'userID': userID},
+                    success: function (response) {
+                        $('.input_box').empty()
+                        let current_sentance = response['send_sen']
+                        let kor_sen = current_sentance['korean']
+                        eng_sen = current_sentance['eng']
+
+                        $('#kor-box2').append(kor_sen)
+                        //let tempHtml = `<div id="kor-box"> ${kor_sen}</div>
+                        //<div id='eng_box' class="engbox"><span class="desc"></span>
+                        //</div>`
+                        //$('#questionbox').append(tempHtml)
+
+                        var num = 0
+                        for (let i = 0; i < eng_sen.length; i++) {
+                            let eng_word = eng_sen[i]
+                            num += 1
+                            let word = `<span class="desc" id="word_${num}">&nbsp;${eng_word}&nbsp&nbsp</span><span>&nbsp&nbsp</span>`
+                            $('.can2').append(word)
+                        }
+
+
+                        // var count = $('.count_group');
+                        // var count_score = current_sentance['count']
+                        // count.find('button').removeClass('selected')
+                        // count.find('button:nth-child(-n+' + count_score + ')').addClass('selected')
+
+                        let canthelp = `<div style="margin-top: 20px" class="form-group"><textarea class="form-control" id="input_box2" id="" cols="30" rows="2"></textarea></div>
+                                        <div>
+                                            <button class="btn btn-outline-secondary" onclick="Score2()">정답 확인</button>
+                                            <button class="btn btn-outline-secondary" onclick="Gage(); count_up('${kor_sen}'); Gage1()">완료</button>
+                                            <button class="btn btn-outline-secondary" onclick="whole_sentance()">남의 문장 보기</button>
+                                            <button class="btn btn-outline-secondary" onclick="send_to_sentance('${kor_sen}')">내 문장에 추가하기</button>
+                                            <button class="btn btn-outline-secondary" onclick="show_eng()">영어 문장 보기</button>
+                                        </div>`
+                        $('#nochoice2').html('')
+                        $('#nochoice2').append(canthelp)
+                        let memo = current_sentance['memo']
+                        // $('#memogo').val(memo)
+
+                    }
+                })
+
+            }
+
+            function send_to_sentance(kor) {
+                let kor_sen = $('#kor-box2').text()
+                $.ajax({
+                    type: 'POST',
+                    url: '/sendtosentance',
+                    data: {'kor_sen': kor, 'userID': userID},
+                    success: function (response) {
+                        let msg = response['msg']
+                        alert(msg)
+                    }
+                })
+            }
+
+            function credits() {
+                $.ajax({
+                    type: 'POST',
+                    url: '/credits',
+                    data: {userID: userID},
+                    success: function (response) {
+                        let credits = response['frequency']
+                        $('#credit').text(credits)
+                    }
+                })
+
+            }
+
+            function show(num) {
+                $('.conbox.con1').hide();
+                $('.conbox.con2').hide();
+                $('.conbox.con3').hide();
+                $('.conbox.con4').hide();
+                $('.conbox.con7').hide();
+                $('.con5').hide();
+                $('.conbox.con6').hide();
+                $('.conbox.con' + num).show();
+                $('.con5').show();
+                $('#close').trigger('click');
+
+            }
+
+            function search() {
+                search_word = $('#search').val()
+                $.ajax({
+                    type: 'GET',
+                    url: '/search',
+                    data: {'search_word': search_word},
+                    success: function (response) {
+                        show(4)
+                        let entire_list = response['list']
+                        $('#entire_list').html('')
+                        for (let i = 0; i < entire_list.length; i++) {
+                            let en_korean = entire_list[i]['korean']
+                            let en_eng = entire_list[i]['eng']
+                            let memo = entire_list[i]['memo']
+                            let test = ''
+                            for (let i = 0; i < en_eng.length; i++) {
+                                test += en_eng[i] + ' '
+                            }
+                            let en_count = entire_list[i]['count']
+                            let count = i + 1
+                            let count2 = i
+                            let tempHtml = `<tr>
+                                            <th scope="row">${count}</th>
+                                            <td class='hover_text' id="en_korean${count2}" onclick="hover_text(${count2})"><a href="">${en_korean}</a></td>
+                                            <td>${test}</td>
+                                            <td></td>
+                                            <td></td>
+                                            <td><div class="custom-control custom-checkbox">
+                                            <input name ='checkboxes' type="checkbox" id="jb-checkbox${count}" class="custom-control-input">
+                                            <label class="custom-control-label" for="jb-checkbox${count}">Checkbox</label>
+                                            </div></td>
+                                            </tr>`
+                            $('#entire_list').append(tempHtml)
+
+                        }
+                    }
+                })
+            }
+
+            function enter_test() {
+                if (window.event.keyCode == 13) {
+                    search()
+                    // 실행시킬 함수 입력
+                }
+            }
+
+            function show_eng() {
+                $('.desc').css('background', '#226128')
+            }
+
+            function post_video() {
+                $('.con5').empty()
+                $.ajax({
+                    type: 'POST',
+                    url: '/video_list',
+                    data: {},
+                    success: function (response) {
+                        video_list = response['video_list']
+                        console.log(video_list)
+                        for (i = 1; i < 6; i++) {
+                            url = video_list[i]['url']
+                            image = video_list[i]['image']
+                            title = video_list[i]['title']
+                            description = video_list[i]['desc']
+                            console.log(image)
+
+                            let temphtml = `<div class=".conin5" class="card" style="width: 18rem;">
+                                              <img src="${image}" class="card-img-top" alt="...">
+                                              <div class="card-body">
+                                                <h5 class="card-title">${title}</h5>
+                                                <p class="card-text">${description}</p>
+                                                <button type="button" onclick="function f() { window.open('${url}', '_blank');}" class="btn btn-outline-secondary">보러가기</button>
+                                              </div>
+                                            </div>`
+                            $('.con5').append(temphtml)
+                        }
+                    }
+                })
+
+            }
+
+            function youtube() {
+                window.open('https://www.youtube.com', '_blank');
+            }
+
+            function naver() {
+                window.open('https://en.dict.naver.com/#/main', '_blank');
+            }
+
+            function graph() {
+                $('#graph_go').empty()
+                $.ajax({
+                    type: 'GET',
+                    url: '/graph',
+                    data: {'userID': userID},
+                    success: function (response) {
+                        graph_list = response['graph']
+                        console.log(graph_list)
+                        for (i = 0; i < 7; i++) {
+                            date = graph_list[i]['date']
+                            dayworkload = graph_list[i]['workload']
+                            percent = dayworkload * 10
+                            let temphtml = `<li><span class="gTerm">${date}</span><span class="gBar" style="height:${percent}%"><span>${percent}%</span></span></li>`
+                            $('#graph_go').append(temphtml)
+                        }
+                    }
+                })
+            }
+
+            function delete_real(id) {
+                if (confirm('정말로 삭제하시겠습니까?')) {
+                    $.ajax({
+                        type: 'POST',
+                        url: '/delete_real',
+                        data: {'ID': id},
+                        success: function (response) {
+                            msg = response['msg']
+                            entire_list();
+                            except_list()
+                        }
+                    })
+                } else {
+                    return
+                }
+            }
+
+            function send_email() {
+                address = $('#exampleFormControlInput1').val();
+                content = $('#exampleFormControlTextarea1').val();
+                console.log(address)
+                $.ajax({
+                    type: 'POST',
+                    url: '/send_email',
+                    data: {'address': address, 'content': content},
+                    success: function (response) {
+                        alert(response['msg'])
+                        $('#exampleFormControlInput1').val('');
+                        $('#exampleFormControlTextarea1').val('');
+
+                    }
+                })
+
+            }
+
+
+        </script>
+
+        <meta name="google-site-verification" content="Y_RPA0alghgjFbflARETfV8XDtIT4uf201-tbcFEGvI"/>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <!--            <span id="box_icon"></span><span id="box_icon2"></span>-->
+            <a class="navbar-brand" href="#" onclick="refresh()" style="font-family: 'Jua'; font-size: 35px">또봐 학원</a>
+
+            <button
+                    id="close" class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarTogglerDemo02"
+                    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <input type="radio" name='tabmenu' id="tab01" checked onclick="show(1)">
+                    <li class="nav-item active">
+                        <label class="nav-link" for="tab01">학습하기 <span class="sr-only">(current)</span></label>
+                    </li>
+                    <input type="radio" name='tabmenu' id="tab02" onclick="show(2)">
+                    <li class="nav-item">
+                        <label class="nav-link" for="tab02">남의 문장 보기</label>
+                    </li>
+                    <input type="radio" name='tabmenu' id="tab03" onclick="show(3)">
+                    <li class="nav-item" for="tab03">
+                        <label class="nav-link" for="tab03">문장입력하기</label>
+                    </li>
+                    <input type="radio" name='tabmenu' id="tab04" onclick="show(4)">
+                    <li class="nav-item" for="tab04">
+                        <label class="nav-link" for="tab04">전체목록</label>
+                    </li>
+                    <input type="radio" name='tabmenu' id="tab06" onclick="show(6)">
+                    <li class="nav-item" for="tab06">
+                        <label class="nav-link" onclick="graph()" for="tab06">학습 그래프</label>
+                    </li>
+                    <input type="radio" name='tabmenu' id="tab07" onclick="show(7)">
+                    <li class="nav-item active">
+                        <label class="nav-link" for="tab07">문의 하기 </label>
+                    </li>
+                    <li class="nav-item">
+                        <!--                <div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+                        <script src="https://apis.google.com/js/platform.js?onload=init" async defer></script>
+                        <span id="name"></span>
+                        <input type="button" class="btn btn-outline-secondary" id="loginBtn" value="Checking..."
+                               onclick="if(this.value === 'Login'){
+                    gauth.signIn().then(function(){
+                        console.log('gauth.signIn()')
+                        checkLoginStatus()
+                        credits();
+                    });
+                } else {
+                    gauth.signOut().then(function(){
+                        console.log('gauth.signOut()');
+                        checkLoginStatus();
+                         window.location.reload()
+                    });
+                }
+                ">
+                    </li>
+                </ul>
+                <div class="form-inline my-2 my-lg-0">
+                    <input onkeypress='enter_test()' class="form-control mr-sm-2" type="search" placeholder="Search"
+                           id="search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" onclick="search()">Search</button>
+                </div>
+            </div>
+        </nav>
+
+        <!--        <div><input type="checkbox"><input type="checkbox"><input type="checkbox"><input type="checkbox"><input-->
+        <!--                type="checkbox"><input type="checkbox"><input type="checkbox"></div> */   &lt;!&ndash;체크박스 정 안되면 이걸로&ndash;&gt;-->
+
+        <div id="wrap">
+
+            <div class="conbox con1">
+                <div style="margin-bottom: 30px" class="progress">
+                    <div id='jb1' class="progress-bar" role="progressbar" style="width: 0%;" aria-valuenow="25"
+                         aria-valuemin="0"
+                         aria-valuemax="100">0%                                                 <!--하고싶은 프로세스바-->
+                    </div>
+                </div>
+                <div class="check">
+                    <div style="padding-bottom: 20px">
+                        <div style="float: left" class="btn-toolbar" role="toolbar"
+                             aria-label="Toolbar with button groups">
+                            <div class='count_group' class="btn-group mr-2" role="group" aria-label="First group">
+                                <button id="btn1" class="btn btn-outline-secondary" type="button" onclick="Count1()"
+                                        class="btn btn-secondary">1
+                                </button>
+                                <button id="btn2" class="btn btn-outline-secondary" type="button" onclick="Count2()"
+                                        class="btn btn-secondary">2
+                                </button>
+                                <button id="btn3" class="btn btn-outline-secondary" type="button" onclick="Count3()"
+                                        class="btn btn-secondary">3
+                                </button>
+                                <button id="btn4" class="btn btn-outline-secondary" type="button" onclick="Count4()"
+                                        class="btn btn-secondary">4
+                                </button>
+                                <button id="btn5" class="btn btn-outline-secondary" type="button" onclick="Count5()"
+                                        class="btn btn-secondary">5
+                                </button>
+                                <button id="btn6" class="btn btn-outline-secondary" type="button" onclick="Count6()"
+                                        class="btn btn-secondary">6
+                                </button>
+                                <button id="btn7" class="btn btn-outline-secondary" type="button" onclick="Count7()"
+                                        class="btn btn-secondary">7
+                                </button>
+                            </div>
+                            <!--                        <progress value="0" max="100" id="jb" style="height: 50px" style="width: 500px">50%</progress>-->
+                            <!--작동되는 프로세스바-->
+                        </div>
+
+                        <!-- Button trigger modal -->
+                        <button type="button"
+                                style="font-size: 15px;padding:2px 7px;margin-right: 5px;margin-bottom: 10px; float: right"
+                                class="btn btn-warning" data-toggle="modal" data-target="#infoModal">
+                            ?
+                        </button>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="infoModalLabel">이용 방법</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        --구글 아이디를 통해 로그인 할 수 있습니다.-- <br>
+                                        <br>
+                                        처음이시면 "남의 문장보기" 먼저 해보세요!<br>
+                                        <br>
+                                        <br>
+                                        *학습하기<br>
+                                        <br>
+                                        &nbsp;한국어 문장이 보여주고 영어 문장을 작성하는 형식입니다.<br>
+                                        <br>
+                                        &nbsp;힌트를 얻고 싶으면 가려진 문장 위에 마우스를 올려보세요!<br>
+                                        <br>
+                                        &nbsp;다음문제: 학습할 문장 중 랜덤으로 추출합니다.<br>
+                                        <br>
+                                        &nbsp;정답 확인: 영어 문장 중 일치한 갯수를 보여줍니다.<br>
+                                        <br>
+                                        &nbsp;완료: 해당 문장의 학습 횟수 및 today count가 올라갑니다.<br>
+                                        <br>
+                                        &nbsp;횟수 초기화: 해당 문장의 학습 횟수가 초기화됩니다.<br>
+                                        <br>
+                                        &nbsp;오늘 학습량 저장하기: today count가 저장됩니다.<br>
+                                        <br>
+                                        &nbsp;영어 문장 보기: 영어 문장을 보여줍니다.<br>
+                                        <br>
+                                        &nbsp;메모 저장하기: 메모 혹은 나만의 문장을 만들고 저장합니다.<br>
+                                        <br>
+                                        &nbsp;credit: 내가 입력한 문장을 다른 사람이 자신의 문장에 추가했을 때 올라갑니다. credit은 그냥 credit입니다...
+                                        <br>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="margin-right: 50px;margin-bottom: 10px; float: right">
+                            <span id="day_workload">today count:&nbsp</span>
+                            <span id="today_count" value="0"></span>
+                            <br><span>credit:&nbsp</span>
+                            <span id="credit" value="0"></span>
+                        </div>
+                    </div>
+                    <p>
+                    <div style="margin-top: 40px" id="questionbox">
+                        <div style="margin-bottom: 20px" id="kor-box"> 다음문제를 눌러주세요. 처음 오신 분은 오른쪽 노란색 물음표를 클릭해주세요!</div>
+                        <div id='eng_box' class="engbox"><span class="desc">Please click the next question</span>
+                        </div>
+                    </div>
+                    </p>
+
+                    <div id="nochoice">
+                        <div style="margin-top: 20px" class="form-group"><textarea class="form-control" cols="30"
+                                                                                   rows="2"></textarea></div>
+                        <div>
+                            <button class="btn btn-outline-secondary" onclick="Score()">정답 확인</button>
+                            <button class="btn btn-outline-secondary" onclick="count_up(); Gage1()">완료</button>
+                            <button class="btn btn-outline-secondary" onclick="next_sen()">다음문제</button>
+                            <button class="btn btn-outline-secondary" onclick="count_reset()">횟수 초기화</button>
+                            <button class="btn btn-outline-secondary" onclick="day_workload()">오늘 학습량 저장하기</button>
+                            <button class="btn btn-outline-secondary" onclick="show_eng()">영어 문장 보기</button>
+                        </div>
+                        <div>
+                            <u><span style="width: 300px; float:left;margin-right: 10px; margin-top: 16px;">&nbsp;출처:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></u>
+                            <span><a style="margin-top: 17px; height: 20px; font-size: 14px; font-weight: lighter"
+                                     href="#"
+                                     class="badge badge-info" onclick="function f(event) {}"
+                                     class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2"
+                                     data-whatever="@mdo">문제 수정</a></span>
+                            <div class="modal fade" id="exampleModal2" tabindex="-1"
+                                 aria-labelledby="exampleModalLabel2"
+                                 aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel2">문장 입력</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="kor-text" class="col-form-label">한국어</label>
+                                                    <textarea class="form-control" id="kor-text">${korean}</textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="eng-text" class="col-form-label">영어</label>
+                                                    <textarea class="form-control" id="eng-text">${eng_sen}</textarea>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="eng-text" class="col-form-label">출처</label>
+                                                    <textarea class="form-control" id="reference"
+                                                              style="height: 50px">${reference}</textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">뒤로가기
+                                            </button>
+                                            <button type="button" onclick="post_sentance()" class="btn btn-primary">저장하기
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group" style="margin-top: 20px;">
+                        <label for="memogo">나만의 문장 만들기!</label>
+                        <button class="btn btn-outline-secondary" id="personal_memo" onclick="memogo()">메모 저장하기</button>
+                        <textarea class="form-control" id="memogo" rows="3"></textarea>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="conbox con2">
+                <!-- Button trigger modal -->
+                <button type="button"
+                        style="font-size: 15px;padding:2px 7px;margin-right: 5px;margin-bottom: 10px; float: right"
+                        class="btn btn-warning" data-toggle="modal" data-target="#infoModal2">
+                    ?
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="infoModal2" tabindex="-1" aria-labelledby="infoModalLabel2"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="infoModalLabel2">이용 방법</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                --구글 아이디를 통해 로그인 할 수 있습니다.-- <br>
+                                <br>
+                                *남의 문장 보기<br>
+                                <br>
+                                &nbsp;다른 사람들이 입력한 문장을 랜덤으로 추출하여 보여줍니다.<br>
+                                <br>
+                                &nbsp;힌트를 얻고 싶으면 가려진 문장 위에 마우스를 올려보세요!<br>
+                                <br>
+                                &nbsp;남의 문장 보기: 문장이 랜덤으로 추출됩니다.<br>
+                                <br>
+                                &nbsp;내 문장에 추가하기: 현재 문장을 내가 학습할 문장에 추가합니다. 단, 구글 로그인이 되어있어야 합니다.<br>
+                                <br>
+                                &nbsp;내 문장에 추가하면 문장을 입력한 사람의 credit이 올라갑니다.<br>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="questionbox2">
+                    <div id="kor-box2"> 다음문제를 눌러주세요</div>
+                    <div id='eng_box2' class="engbox"><span
+                            class="desc">Please press the next question</span>
+                    </div>
+                </div>
+                <div id="nochoice2">
+                    <div><input class="input_box" type="text"></div>
+                    <div>
+                        <button class="btn btn-outline-secondary" onclick="Score()">정답 확인</button>
+                        <button class="btn btn-outline-secondary" onclick="whole_sentance()">남의 문장 보기</button>
+                        <button class="btn btn-outline-secondary" onclick="send_to_sentance()">내 문장에 추가하기</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conbox con3">
+                <button type="button" onclick="function f(event) {}" class="btn btn-success"
+                        data-toggle="modal"
+                        data-target="#exampleModal"
+                        data-whatever="@mdo">영어 문장 입력하기
+                </button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">문장 입력</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="form-group">
+                                        <label for="kor-text2" class="col-form-label">한국어</label>
+                                        <textarea class="form-control" id="kor-text2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eng-text2" class="col-form-label">영어</label>
+                                        <textarea class="form-control" id="eng-text2"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="eng-text2" class="col-form-label">출처</label>
+                                        <textarea class="form-control" id="reference2"
+                                                  style="height: 50px"></textarea>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="memo2" class="col-form-label">메모</label>
+                                        <textarea class="form-control" id="memo2"
+                                                  style="height: 50px"></textarea>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">뒤로가기
+                                </button>
+                                <button type="button" onclick="post_sentance2()" class="btn btn-primary">
+                                    저장하기
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="conbox con4">
+                <button class="btn btn-outline-secondary" style="margin-bottom: 5px" onclick="entire_list(); except_list()">전체 문장</button>
+                <!-- Button trigger modal -->
+                <button type="button"
+                        style="font-size: 15px;padding:2px 7px;margin-right: 5px;margin-bottom: 10px; float: right"
+                        class="btn btn-warning" data-toggle="modal" data-target="#infoModal3">
+                    ?
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="infoModal3" tabindex="-1" aria-labelledby="infoModalLabel3"
+                     aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="infoModalLabel3">이용 방법</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                --구글 아이디를 통해 로그인 할 수 있습니다.-- <br>
+                                <br>
+                                *전체 목록<br>
+                                <br>
+                                &nbsp;"전체 문장"을 클릭하면 학습 문장 전체 목록을 보여줍니다.<br>
+                                <br>
+                                &nbsp;checkbox 체크한 후 "제외하기" 버튼을 눌르면 학습할 목록에서 제외되며 랜덤 추출되지 않습니다.<br>
+                                <br>
+                                &nbsp;checkbox 체크한 후 "학습하기" 버튼을 눌르면 학습할 목록에 다시 추가됩니다.<br>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead class="thead-light">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Korean/English</th>
+                        <!--                    <th scope="col">English</th>-->
+                        <th scope="col">Count</th>
+                        <!--                        <th scope="col">메모</th>-->
+                        <th scope="col">
+                            <button class="btn btn-outline-secondary" onclick="delete_sen()">제외하기</button>
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="entire_list">
+                    </tbody>
+                    <table class="table" id="except_place">
+                        <thead class="thead-light">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Korean/English</th>
+                            <!--                        <th scope="col">English</th>-->
+                            <th scope="col">Count</th>
+                            <!--                            <th scope="col">메모</th>-->
+                            <th scope="col">
+                                <button class="btn btn-outline-secondary" onclick="return_sen()">학습하기</button>
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody id="except_list">
+                        </tbody>
+                    </table>
+                </table>
+
+            </div>
+            <div class="btn_loca">
+                <img class="btn_image"
+                     src="https://e7.pngegg.com/pngimages/773/67/png-clipart-youtube-play-button-computer-icons-youtube-angle-logo.png"
+                     onclick="youtube()">
+                <br><img style="margin-top: 3px" class="btn_image"
+                         src="https://lh3.googleusercontent.com/ytdLHA3Td0wOlW-e1exeUNVhrqyWXpbsb0MJVt8IjncgyTSwITJ6tsWUGsd2ulGLS1g"
+                         onclick="naver()">
+                <br><span style="font-family: Jua;font-size:15px">바로가기</span>
+            </div>
+
+
+        </div>
+
+
+        <div class="conbox con6">
+            <style type="text/css">
+                @charset "utf-8";
+                /* Vertical Bar Graph */
+                .vGraph {
+                    padding: 20px 0;
+                }
+
+                .vGraph ul {
+                    margin: 0;
+                    padding: 0;
+                    height: 200px;
+                    border: 1px solid #ddd;
+                    border-top: 0;
+                    border-right: 0;
+                    font-size: 11px;
+                    font-family: Tahoma, Geneva, sans-serif;
+                    list-style: none;
+                }
+
+                .vGraph ul:after {
+                    content: "";
+                    display: block;
+                    clear: both;
+                }
+
+                .vGraph li {
+                    float: left;
+                    display: inline;
+                    width: 8%;
+                    height: 100%;
+                    margin: 0 3%;
+                    position: relative;
+                    text-align: center;
+                    white-space: nowrap;
+                }
+
+                .vGraph .gTerm {
+                    position: relative;
+                    display: inline-block;
+                    width: 100%;
+                    height: 20px;
+                    line-height: 20px;
+                    margin: 0 -100% -20px 0;
+                    padding: 200px 0 0 0;
+                    vertical-align: bottom;
+                    color: #767676;
+                    font-weight: bold;
+                }
+
+                .vGraph .gBar {
+                    position: relative;
+                    display: inline-block;
+                    width: 100%;
+                    margin: -1px 0 0 0;
+                    border: 1px solid #ccc;
+                    border-bottom: 0;
+                    background: #e9e9e9;
+                    vertical-align: bottom;
+                }
+
+                .vGraph .gBar span {
+                    position: absolute;
+                    width: 100%;
+                    top: -20px;
+                    left: 0;
+                    color: #767676;
+                }
+            </style>
+            <h1>학습 그래프(Vertical Bar Graph)</h1>
+            <div class="vGraph">
+                <ul id="graph_go">
+                    <li><span class="gTerm">SUN</span><span class="gBar" style="height:0%"><span>0%</span></span></li>
+                    <li><span class="gTerm">MON</span><span class="gBar" style="height:20%"><span>20%</span></span></li>
+                    <li><span class="gTerm">TUE</span><span class="gBar" style="height:30%"><span>30%</span></span></li>
+                    <li><span class="gTerm">WED</span><span class="gBar" style="height:40%"><span>40%</span></span></li>
+                    <li><span class="gTerm">THU</span><span class="gBar" style="height:50%"><span>50%</span></span></li>
+                    <li><span class="gTerm">FRI</span><span class="gBar" style="height:60%"><span>60%</span></span></li>
+                    <li><span class="gTerm">SAT</span><span class="gBar" style="height:100%"><span>100%</span></span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div class="conbox con7">
+            <form>
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1"
+                           placeholder="답장 받으실 자신의 이메일 주소를 입력해주세요">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">건의 사항, 문제점, 오류, 조언, 칭찬, 욕, 모두 받습니다</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+            </form>
+            <button type="button" class="btn btn-secondary" onclick="send_email()">메일 보내기</button>
+        </div>
+
+
+        <!--        <div class="con5" style="margin-top: 50px;">-->
+        <!--            <span style="max-width: 540px; border-style: none;" class="card mb-3" style="max-width: 540px;">-->
+        <!--                <div class="row no-gutters">-->
+        <!--                    <div class="col-md-4">-->
+        <!--                        <img src="..." class="card-img" alt="...">-->
+        <!--                    </div>-->
+        <!--                    <div class="col-md-8">-->
+        <!--                        <div class="card-body">-->
+        <!--                            <h5 class="card-title">Card title</h5>-->
+        <!--                            <p class="card-text">This is a wider card with supporting text below as a natural-->
+        <!--                                lead-in to-->
+        <!--                                additional content. This content is a little bit longer.</p>-->
+        <!--                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!--            </span>-->
+        <!--        </div>-->
+
+
+    </body>
+</html>
