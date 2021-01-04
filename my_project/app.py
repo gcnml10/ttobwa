@@ -233,10 +233,11 @@ def sendtome():
     new_sen = db.sentances.find_one({'korean': kor_sen}, {'_id': 0})
     print(new_sen)
     eng = new_sen['eng']
+    reference = new_sen['reference']
     print(eng)
     writerID = new_sen['writerID']
     print(eng)
-    sentance = {'userID': userID, 'writerID': writerID, 'korean': kor_sen, 'eng': eng, 'count': 0, 'memo': '',
+    sentance = {'userID': userID, 'writerID': writerID, 'korean': kor_sen, 'eng': eng, 'reference': reference, 'count': 0, 'memo': '',
                 'running': 'Y'}
     print(sentance)
     if userID == writerID:

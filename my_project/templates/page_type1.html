@@ -542,11 +542,11 @@
                                          <div style="margin-top: 20px" class="form-group"><textarea class="form-control" id="input_box" id="" cols="30" rows="2"></textarea></div>
                                         <div>
                                             <button class="btn btn-outline-secondary" onclick="Score()">정답 확인</button>
+                                            <button class="btn btn-outline-secondary" onclick="show_eng()">영어 문장 보기</button>
                                             <button class="btn btn-outline-secondary" onclick="count_up('${ids}'); Gage1()">완료</button>
                                             <button class="btn btn-outline-secondary" onclick="next_sen()">다음문제</button>
                                             <button class="btn btn-outline-secondary" onclick="count_reset('${ids}')">횟수 초기화</button>
                                             <button class="btn btn-outline-secondary" onclick="day_workload()">오늘 학습량 저장하기</button>
-                                            <button class="btn btn-outline-secondary" onclick="show_eng()">영어 문장 보기</button>
                                         </div>
                                         <div>
                         <u><span style="width: 90%; max-width: 300px float:left;margin-right: 10px; margin-top: 16px;">&nbsp;출처:&nbsp;${reference}</span></u>
@@ -938,7 +938,7 @@
                 // }
                 $('#questionbox2').html('')
                 let tempHtml = `<div id = "kor-box2" style="margin-bottom: 10px"></div>
-                                <div id = 'eng_box2' style="width: 100%; word-wrap: break-word" class= "engbox">
+                                <div id = 'eng_box2' style="width: 100%; word-wrap: break-word; margin-bottom: 20px;" class= "engbox">
                                     <span class= "can2"></span>
                                 </div>`
                 $('#questionbox2').append(tempHtml)
@@ -951,6 +951,7 @@
                         $('.input_box').empty()
                         let current_sentance = response['send_sen']
                         let kor_sen = current_sentance['korean']
+                        let reference = current_sentance['reference']
                         eng_sen = current_sentance['eng']
 
                         $('#kor-box2').append(kor_sen)
@@ -963,7 +964,7 @@
                         for (let i = 0; i < eng_sen.length; i++) {
                             let eng_word = eng_sen[i]
                             num += 1
-                            let word = `<span class="desc" id="word_${num}">&nbsp;${eng_word}&nbsp&nbsp</span><span>&nbsp&nbsp</span>`
+                            let word = `<span class="desc" style="white-space:nowrap;" id="word_${num}">&nbsp;${eng_word}&nbsp&nbsp</span><span>&nbsp&nbsp</span>`
                             $('.can2').append(word)
                         }
 
@@ -973,7 +974,8 @@
                         // count.find('button').removeClass('selected')
                         // count.find('button:nth-child(-n+' + count_score + ')').addClass('selected')
 
-                        let canthelp = `<div style="margin-top: 20px" class="form-group"><textarea class="form-control" id="input_box2" id="" cols="30" rows="2"></textarea></div>
+                        let canthelp = `<u><span style="width: 90%; max-width: 300px float:left;margin-right: 10px; margin-top: 50px;">&nbsp;출처:&nbsp;${reference}</span></u>
+                                        <div style="margin-top: 20px" class="form-group"><textarea class="form-control" id="input_box2" id="" cols="30" rows="2"></textarea></div>
                                         <div>
                                             <button class="btn btn-outline-secondary" onclick="Score2()">정답 확인</button>
                                             <button class="btn btn-outline-secondary" onclick="Gage(); count_up('${kor_sen}'); Gage1()">완료</button>
@@ -1473,7 +1475,7 @@
 
                 <div id="questionbox2">
                     <div id="kor-box2"> 다음문제를 눌러주세요</div>
-                    <div id='eng_box2' class="engbox"><span
+                    <div id='eng_box2' class="engbox" style="margin-bottom: 10px"><span
                             class="desc">Please press the next question</span>
                     </div>
                 </div>
@@ -1621,6 +1623,66 @@
                 <br><span style="font-family: Jua;font-size:15px">바로가기</span>
             </div>
 
+            <div class="btn_loca2">
+                <style>
+                    #back-to-top {
+                        display: inline-block;
+                        background-color: #FF9800;
+                        width: 50px;
+                        height: 50px;
+                        text-align: center;
+                        border-radius: 4px;
+                        position: fixed;
+                        bottom: 30px;
+                        right: 30px;
+                        transition: background-color .3s,
+                        opacity .5s, visibility .5s;
+                        opacity: 0;
+                        visibility: hidden;
+                        z-index: 1000;
+                    }
+                    #back-to-top::after {
+                        content: "\f077";
+                        font-family: FontAwesome;
+                        font-weight: normal;
+                        font-style: normal;
+                        font-size: 2em;
+                        line-height: 50px;
+                        color: #fff;
+                    }
+                    #back-to-top:hover {
+                        cursor: pointer;
+                        background-color: #333;
+                    }
+                    #back-to-top:active {
+                        background-color: #555;
+                    }
+                    #back-to-top.show {
+                        opacity: 1;
+                        visibility: visible;
+                    }
+
+                </style>
+                <script>
+                    $(function(){
+                        $('#back-to-top').on('click',function(e){
+                            e.preventDefault();
+                            $('html,body').animate({scrollTop:0},600);
+                        });
+
+                        $(window).scroll(function() {
+                            if ($(document).scrollTop() > 100) {
+                                $('#back-to-top').addClass('show');
+                            } else {
+                                $('#back-to-top').removeClass('show');
+                            }
+                        });
+                    });
+                </script>
+                <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+                <a id="back-to-top"></a>
+            </div>
+
 
         </div>
 
@@ -1694,7 +1756,7 @@
                     color: #767676;
                 }
             </style>
-            <h1>학습 그래프(Vertical Bar Graph)</h1>
+            <h1>학습 그래프</h1>
             <div class="vGraph">
                 <ul id="graph_go">
                     <li><span class="gTerm">SUN</span><span class="gBar" style="height:0%"><span>0%</span></span></li>
