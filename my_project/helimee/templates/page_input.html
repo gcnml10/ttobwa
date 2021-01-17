@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <!-- 폰트-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+        <!--스타일-->
+        <style>
+            *{
+                font-family: 'Jua', sans-serif;
+            }
+
+            .pie-chart {
+                background: #CCCCCC;
+                margin-top: 5%;
+                position: relative;
+                display:inline-block;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                transition: 0.5s;
+                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+
+            }
+            span.center{
+                background: #fff;
+                display : block;
+                position: absolute;
+                top:50%; left:50%;
+                width:200px; height:200px;
+                border-radius: 50%;
+                text-align:center; line-height: 200px;
+                font-size:30px;
+                transform: translate(-50%, -50%);
+            }
+
+            .gym_name{
+                margin-top: 3%;
+                /*margin-top: 20%;*/
+                display: inline-block;
+                font-size: 2em;
+                border-style: solid;
+                border-color: #1d1b4f;
+                border-width: 5px 0 0  0;
+                /*border-radius: 15px;*/
+                padding: 0 10px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .update_time{
+                text-align: center;
+                color:#777777;
+            }
+
+        </style>
+
+        <!--스크립트-->
+        <script>
+            $(window).ready(function(){
+                draw(80, '.pie-chart1', '#fa981e');
+                draw(50, '.pie-chart2', '#8b22ff');
+                draw(30, '.pie-chart3','#ff0');
+            });
+
+            function draw(max, classname, colorname){
+                var i=1;
+                var func1 = setInterval(function(){
+                    if(i<max){
+                        color1(i,classname,colorname);
+                        i++;
+                    } else{
+                        // $(classname).css({
+                        //     "background":"conic-gradient("+colorname+" 0% "+i+"%, #CCCCCC "+i+"% 100%)"
+                        // });
+                        clearInterval(func1);
+                    }
+                },10);
+            }
+            function color1(i, classname,colorname){
+                $(classname).css({
+                    "background":"conic-gradient("+colorname+" 0% "+i+"%, #EEEEEE "+i+"% 100%)"
+                });
+            }
+
+
+            function replay(){
+                draw(80, '.pie-chart1', '#ccc');
+                draw(50, '.pie-chart2', '#8b22ff');
+                draw(30, '.pie-chart3','#ff0');
+            }
+
+        </script>
+
+
+    </head>
+    <body>
+
+        <nav class="navbar navbar-light" style="background-color: #eeeeee;">
+            <a class="navbar-brand" href="/" style="font-size: 2.3em">헬리미</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <div class="gym_name">
+            <span>ABfitness</span>
+        </div>
+
+
+
+        <div style="text-align: center; display: block">
+            <div class="pie-chart pie-chart1"><span class="center" id="current">8명 / 12명</span></div>
+        </div>
+
+        <div class="card" style="margin-top: 3%">
+            <div class="card-body update_time">
+                <span class="">2021.01.16 17:00 기준</span>
+            </div>
+        </div>
+        <p>
+
+        </p>
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">현재 인원</span>
+            <input type="text" id="people-number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <button type="button" class="btn btn-success" onclick="people_input()">EDIT</button>
+
+        <script>
+            function people_input() {
+                people = $('#people-number').val()
+
+                // if (korean_input == '') {
+                //     alert('한국어 문장을 입력해주세요')
+                //     $('#kor-text').focus()
+                //     return;
+                // } else if (eng_input == '') {
+                //     alert('영어 문장을 입력해주세요')
+                //     $('#eng-text').focus()
+                //     return;
+                // } else {
+                //     korean_input_3 = $('#kor-text').val()
+                //     eng_input_3 = $('#eng-text').val()
+                //     reference_3 = $('#reference').val()
+                // }
+
+                $.ajax({
+                    type: 'POST',
+                    url: '/peopleinput',
+                    data: {
+                        'people_give': people
+                    },
+                    success: function (response) {
+                        alert(response['msg'])
+                    }
+                })
+
+            }
+        </script>
+
+    </body>
+</html>

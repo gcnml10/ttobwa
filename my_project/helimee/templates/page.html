@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- 폰트-->
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+
+        <!--스타일-->
+        <style>
+            *{
+                font-family: 'Jua', sans-serif;
+            }
+
+            .pie-chart {
+                background: #CCCCCC;
+                margin-top: 5%;
+                position: relative;
+                display:inline-block;
+                width: 300px;
+                height: 300px;
+                border-radius: 50%;
+                transition: 0.5s;
+                box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+
+            }
+            span.center{
+                background: #fff;
+                display : block;
+                position: absolute;
+                top:50%; left:50%;
+                width:200px; height:200px;
+                border-radius: 50%;
+                text-align:center; line-height: 200px;
+                font-size:30px;
+                transform: translate(-50%, -50%);
+            }
+
+            .gym_name{
+                margin-top: 3%;
+                /*margin-top: 20%;*/
+                display: inline-block;
+                font-size: 2em;
+                border-style: solid;
+                border-color: #1d1b4f;
+                border-width: 5px 0 0  0;
+                /*border-radius: 15px;*/
+                padding: 0 10px;
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            }
+
+            .update_time{
+                text-align: center;
+                color:#777777;
+            }
+
+        </style>
+
+        <style>
+            .wrap{
+                display: block;
+                float: left;
+            }
+            .nav {
+                overflow: hidden;
+                position: absolute;
+                display: block;
+                left: 50%;
+                /*right: 10%;*/
+                top: 2%;
+                /*top: 50%;*/
+                width: auto;
+                height: 90px;
+                /*margin-top: -50px;*/
+                background: #fff;
+                border-radius: 5px;
+                -webkit-transform: translate3d(-50%, 0, 0);
+                transform: translate3d(-50%, 0, 0);
+                box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
+            }
+            .nav__cb {
+                z-index: -1000;
+                position: absolute;
+                left: 0;
+                top: 0;
+                opacity: 0;
+                pointer-events: none;
+            }
+            .nav__content {
+                position: relative;
+                width: 90px;
+                height: 100%;
+                -webkit-transition: width 1s cubic-bezier(0.49, -0.3, 0.68, 1.23);
+                transition: width 1s cubic-bezier(0.49, -0.3, 0.68, 1.23);
+            }
+            .nav__cb:checked ~ .nav__content {
+                -webkit-transition: width 1s cubic-bezier(0.48, 0.43, 0.29, 1.3);
+                transition: width 1s cubic-bezier(0.48, 0.43, 0.29, 1.3);
+                width: 410px;
+            }
+            .nav__items {
+                position: relative;
+                width: 410px;
+                height: 100%;
+                padding-left: 20px;
+                padding-right: 110px;
+                list-style-type: none;
+                font-size: 0;
+            }
+            .nav__item {
+                display: inline-block;
+                vertical-align: top;
+                width: 70px;
+                text-align: center;
+                color: #6C7784;
+                font-size: 14px;
+                line-height: 90px;
+                font-family: Helvetica, Arial, sans-serif;
+                font-weight: bold;
+                -webkit-perspective: 1000px;
+                perspective: 1000px;
+                -webkit-transition: color 0.3s;
+                transition: color 0.3s;
+                cursor: pointer;
+            }
+            .nav__item:hover {
+                color: #00bdea;
+            }
+            .nav__item-text {
+                display: block;
+                height: 100%;
+                -webkit-transform: rotateY(-70deg);
+                transform: rotateY(-70deg);
+                opacity: 0;
+                -webkit-transition: opacity 0.7s, -webkit-transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5);
+                transition: opacity 0.7s, -webkit-transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5);
+                transition: transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5), opacity 0.7s;
+                transition: transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5), opacity 0.7s, -webkit-transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5);
+            }
+            .nav__cb:checked ~ .nav__content .nav__item-text {
+                -webkit-transform: rotateY(0);
+                transform: rotateY(0);
+                opacity: 1;
+                -webkit-transition: opacity 0.2s, -webkit-transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5);
+                transition: opacity 0.2s, -webkit-transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5);
+                transition: transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5), opacity 0.2s;
+                transition: transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5), opacity 0.2s, -webkit-transform 0.7s cubic-bezier(0.48, 0.43, 0.7, 2.5);
+            }
+            .nav__item:nth-child(1) .nav__item-text {
+                -webkit-transition-delay: 0.3s;
+                transition-delay: 0.3s;
+            }
+            .nav__cb:checked ~ .nav__content .nav__item:nth-child(1) .nav__item-text {
+                -webkit-transition-delay: 0s;
+                transition-delay: 0s;
+            }
+            .nav__item:nth-child(2) .nav__item-text {
+                -webkit-transition-delay: 0.2s;
+                transition-delay: 0.2s;
+            }
+            .nav__cb:checked ~ .nav__content .nav__item:nth-child(2) .nav__item-text {
+                -webkit-transition-delay: 0.1s;
+                transition-delay: 0.1s;
+            }
+            .nav__item:nth-child(3) .nav__item-text {
+                -webkit-transition-delay: 0.1s;
+                transition-delay: 0.1s;
+            }
+            .nav__cb:checked ~ .nav__content .nav__item:nth-child(3) .nav__item-text {
+                -webkit-transition-delay: 0.2s;
+                transition-delay: 0.2s;
+            }
+            .nav__item:nth-child(4) .nav__item-text {
+                -webkit-transition-delay: 0s;
+                transition-delay: 0s;
+            }
+            .nav__cb:checked ~ .nav__content .nav__item:nth-child(4) .nav__item-text {
+                -webkit-transition-delay: 0.3s;
+                transition-delay: 0.3s;
+            }
+            .nav__btn {
+                position: absolute;
+                right: 0;
+                top: 0;
+                width: 90px;
+                height: 90px;
+                padding: 36px 31px;
+                cursor: pointer;
+            }
+            .nav__btn:before, .nav__btn:after {
+                content: "";
+                display: block;
+                width: 28px;
+                height: 4px;
+                border-radius: 2px;
+                background: #096DD3;
+                -webkit-transform-origin: 50% 50%;
+                transform-origin: 50% 50%;
+                -webkit-transition: background-color 0.3s, -webkit-transform 1s cubic-bezier(0.48, 0.43, 0.29, 1.3);
+                transition: background-color 0.3s, -webkit-transform 1s cubic-bezier(0.48, 0.43, 0.29, 1.3);
+                transition: transform 1s cubic-bezier(0.48, 0.43, 0.29, 1.3), background-color 0.3s;
+                transition: transform 1s cubic-bezier(0.48, 0.43, 0.29, 1.3), background-color 0.3s, -webkit-transform 1s cubic-bezier(0.48, 0.43, 0.29, 1.3);
+            }
+            .nav__btn:before {
+                margin-bottom: 10px;
+            }
+            .nav__btn:hover:before, .nav__btn:hover:after {
+                background: #00bdea;
+            }
+            .nav__cb:checked ~ .nav__btn:before {
+                -webkit-transform: translateY(7px) rotate(-225deg);
+                transform: translateY(7px) rotate(-225deg);
+            }
+            .nav__cb:checked ~ .nav__btn:after {
+                -webkit-transform: translateY(-7px) rotate(225deg);
+                transform: translateY(-7px) rotate(225deg);
+            }
+        </style>
+
+        <style>
+            .list {
+                list-style: none;
+                padding: 0;
+            }
+            .list > li {
+                padding: 0;
+            }
+            .list-checkbox {
+                display: none;
+            }
+            .title {
+                padding: 10px;
+                margin: 3px 2px;
+                border: 1px solid #ddd;
+                border-radius: 10px;
+                background: #ffffff;
+                cursor: pointer;
+                display: block;
+            }
+            .desc {
+                max-height: 0;
+                overflow: hidden;
+                transition: 0.5s;
+            }
+            .desc > div {
+                margin: 10px;
+            }
+            .list-checkbox:checked + .title + .desc {
+                max-height: 1000px;
+            }
+        </style>
+
+        <style>
+            #container2{
+                display: none;
+            }
+        </style>
+
+        <script>
+            function show_manager(){
+                $('#container1').hide();
+                $('#container2').show();
+                $('#exampleModal').modal('show');
+            }
+        </script>
+
+        <!--스크립트-->
+        <script>
+            function chart(num){
+                draw(num, '.pie-chart1', '#fa981e');
+            }
+
+            function draw(max, classname, colorname){
+                var i=1;
+                var func1 = setInterval(function(){
+                    if(i<max){
+                        color1(i,classname,colorname);
+                        i++;
+                    } else{
+                        // $(classname).css({
+                        //     "background":"conic-gradient("+colorname+" 0% "+i+"%, #CCCCCC "+i+"% 100%)"
+                        // });
+                        clearInterval(func1);
+                    }
+                },10);
+            }
+            function color1(i, classname,colorname){
+                $(classname).css({
+                    "background":"conic-gradient("+colorname+" 0% "+i+"%, #EEEEEE "+i+"% 100%)"
+                });
+            }
+
+            // $(window).ready(chart())
+
+        </script>
+
+
+    </head>
+    <body>
+
+
+        <!--        <div class="wrap">-->
+        <!--            <nav class="nav">-->
+        <!--                <input type="checkbox" class="nav__cb" id="menu-cb"/>-->
+        <!--                <div class="nav__content">-->
+        <!--                    <ul class="nav__items">-->
+        <!--                        <li class="nav__item">-->
+        <!--                            <span class="nav__item-text">-->
+        <!--                              Home-->
+        <!--                            </span>-->
+        <!--                        </li>-->
+        <!--                        <li class="nav__item">-->
+        <!--                            <span class="nav__item-text">-->
+        <!--                              Works-->
+        <!--                            </span>-->
+        <!--                        </li>-->
+        <!--                        <li class="nav__item">-->
+        <!--            <span class="nav__item-text">-->
+        <!--              About-->
+        <!--            </span>-->
+        <!--                        </li>-->
+        <!--                        <li class="nav__item">-->
+        <!--            <span class="nav__item-text">-->
+        <!--              Contact-->
+        <!--            </span>-->
+        <!--                        </li>-->
+        <!--                    </ul>-->
+        <!--                </div>-->
+        <!--                <label class="nav__btn" for="menu-cb"></label>-->
+        <!--            </nav>-->
+        <!--        </div>-->
+
+        <!--         네비게이션 바-->
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="navbar navbar-light" style="background-color: #eeeeee;">
+            <a class="navbar-brand" href="/" style="font-size: 2.3em">헬리미</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home
+                            <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" >Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+                        <a class="nav-link"  onclick="show_manager()">관리자</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Action</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a class="dropdown-item" href="#">Something else here</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Separated link</a>
+                        </div>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+        <div class="gym_name">
+            <span>ABfitness</span>
+        </div>
+
+        <script>
+            function get_people() {
+                $('#current').empty()
+                $('#cur_time').empty()
+                $.ajax({
+                    type: 'GET',
+                    url: '/peopleget',
+                    data: {},
+                    success: function (response) {
+                        current_people = response['current_people']
+                        current_time = response['current_time']
+                        console.log(current_people)
+                        // let temphtml = `<li><span class="gTerm">${date}</span><span class="gBar" style="height:${percent}%"><span>${percent}%</span></span></li>`
+                        $('#current').text(current_people+" / 12명")
+                        $('#cur_time').text(current_time+ " 기준")
+                        chart((current_people/12)*100)
+                    }
+                })
+            }
+
+            window.onload = function(){
+                get_people()
+            }
+
+        </script>
+
+        <div style="text-align: center; display: block">
+            <div class="pie-chart pie-chart1"><span class="center" id="current">8명 / 12명</span></div>
+        </div>
+
+        <div class="card" style="margin-top: 3%">
+            <div class="card-body update_time">
+                <span id="cur_time">2021.01.16 17:00 기준</span>
+            </div>
+        </div>
+        <p>
+
+        </p>
+
+        <div id="container1">
+            <ul class="list">
+                <li>
+                    <input
+                            type="radio"
+                            name="list"
+                            class="list-checkbox"
+                            id="list-input1"
+
+                    />
+                    <label for="list-input1" class="title">공지사항!</label>
+                    <div class="desc">
+                        <div>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
+                            quam alias veritatis esse deserunt veniam explicabo sunt eligendi,
+                            eaque perferendis, doloremque omnis delectus distinctio incidunt
+                            adipisci. Sit distinctio vero dolore. Lorem ipsum dolor sit, amet
+                            consectetur adipisicing elit. Quasi molestias, delectus doloremque
+                            reprehenderit excepturi natus non error totam veritatis aut odit,
+                            aperiam repellat similique suscipit nesciunt praesentium dicta,
+                            inventore dignissimos?
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <input
+                            type="radio"
+                            name="list"
+                            class="list-checkbox"
+                            id="list-input2"
+                    />
+                    <label for="list-input2" class="title">샤워실 이용 제한 안내</label>
+                    <div class="desc">
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
+                            aperiam autem neque nulla, explicabo pariatur quas, quis facere
+                            magnam inventore praesentium temporibus laudantium. Iure illo saepe
+                            earum at labore. Ducimus? Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Doloremque porro vel cum ipsa tempore, nemo fugit
+                            earum sequi quidem natus? Blanditiis quibusdam ab ullam numquam
+                            laborum, repellat obcaecati sed dolore!
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <input
+                            type="radio"
+                            name="list"
+                            class="list-checkbox"
+                            id="list-input3"
+                    />
+                    <label for="list-input3" class="title">영업시간 조정: 09:00 ~ 21:00</label>
+                    <div class="desc">
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
+                            aperiam autem neque nulla, explicabo pariatur quas, quis facere
+                            magnam inventore praesentium temporibus laudantium. Iure illo saepe
+                            earum at labore. Ducimus?
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <input
+                            type="radio"
+                            name="list"
+                            class="list-checkbox"
+                            id="list-input4"
+                    />
+                    <label for="list-input4" class="title">이것만은 꼭 지켜주세요!</label>
+                    <div class="desc">
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
+                            aperiam autem neque nulla, explicabo pariatur quas, quis facere
+                            magnam inventore praesentium temporibus laudantium. Iure illo saepe
+                            earum at labore. Ducimus? Lorem ipsum dolor sit amet consectetur
+                            adipisicing elit. Ea quas ratione velit, cupiditate saepe vero
+                            quisquam quod praesentium natus, aliquam sed qui provident incidunt
+                            voluptatem ducimus voluptatibus. Maxime, sit tempora.
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <input
+                            type="radio"
+                            name="list"
+                            class="list-checkbox"
+                            id="list-input5"
+                    />
+                    <label for="list-input5" class="title">전화번호 및 연락처</label>
+                    <div class="desc">
+                        <div>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
+                            aperiam autem neque nulla, explicabo pariatur quas, quis facere
+                            magnam inventore praesentium temporibus laudantium. Iure illo saepe
+                            earum at labore. Ducimus? Lorem ipsum dolor sit amet consectetur,
+                            adipisicing elit. Temporibus a atque sed quod tempora suscipit sunt!
+                            Magni nesciunt velit optio porro illo necessitatibus minus, quisquam
+                            impedit totam at explicabo tenetur.
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <div id="container2">
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default">현재 인원</span>
+                <input type="text" id="people-number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <button type="button" class="btn btn-success" onclick="people_input()">EDIT</button>
+
+            <script>
+                function people_input() {
+                    people = $('#people-number').val()
+
+                    // if (korean_input == '') {
+                    //     alert('한국어 문장을 입력해주세요')
+                    //     $('#kor-text').focus()
+                    //     return;
+                    // } else if (eng_input == '') {
+                    //     alert('영어 문장을 입력해주세요')
+                    //     $('#eng-text').focus()
+                    //     return;
+                    // } else {
+                    //     korean_input_3 = $('#kor-text').val()
+                    //     eng_input_3 = $('#eng-text').val()
+                    //     reference_3 = $('#reference').val()
+                    // }
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/peopleinput',
+                        data: {
+                            'people_give': people
+                        },
+                        success: function (response) {
+                            alert(response['msg'])
+                            get_people()
+                        }
+                    })
+
+                }
+            </script>
+        </div>
+
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
+
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="mb-3">
+                                <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                <input type="text" class="form-control" id="recipient-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="message-text" class="col-form-label">Message:</label>
+                                <textarea class="form-control" id="message-text"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Send message</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            Launch demo modal
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
