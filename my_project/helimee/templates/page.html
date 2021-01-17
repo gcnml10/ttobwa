@@ -14,10 +14,10 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
                 integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
                 crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" integrity="sha384-q2kxQ16AaE6UbzuKqyBE9/u/KzioAlnx2maXQHiDX9d4/zp8Ok3f+M7DPm+Ib6IU" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-pQQkAEnwaBkjpqZ8RU1fF1AKtTcHJwFl3pblpTlHXybJjHpMYo79HY3hIi4NKxyj" crossorigin="anonymous"></script>
         <!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
         <!-- 폰트-->
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
@@ -276,7 +276,6 @@
             function show_manager(){
                 $('#container1').hide();
                 $('#container2').show();
-                $('#exampleModal').modal('show');
             }
         </script>
 
@@ -348,32 +347,7 @@
 
         <!--         네비게이션 바-->
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
-                            <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipient-name">
-                            </div>
-                            <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+
 
         <nav class="navbar navbar-light" style="background-color: #eeeeee;">
             <a class="navbar-brand" href="/" style="font-size: 2.3em">헬리미</a>
@@ -384,33 +358,27 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home
-                            <span class="sr-only">(current)</span>
+                        <a class="nav-link" href="/">Home
+                            <span class="sr-only"></span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" >Features</a>
+                        <a class="nav-link" href="/about_page">About</a>
                     </li>
                     <li class="nav-item">
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
-                        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
-
                         <a class="nav-link"  onclick="show_manager()">관리자</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
-                        </div>
-                    </li>
+
+<!--                    <li class="nav-item dropdown">-->
+<!--                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>-->
+<!--                        <div class="dropdown-menu">-->
+<!--                            <a class="dropdown-item" href="#">Action</a>-->
+<!--                            <a class="dropdown-item" href="#">Another action</a>-->
+<!--                            <a class="dropdown-item" href="#">Something else here</a>-->
+<!--                            <div class="dropdown-divider"></div>-->
+<!--                            <a class="dropdown-item" href="#">Separated link</a>-->
+<!--                        </div>-->
+<!--                    </li>-->
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
                     <input class="form-control mr-sm-2" type="text" placeholder="Search">
@@ -433,11 +401,86 @@
                     success: function (response) {
                         current_people = response['current_people']
                         current_time = response['current_time']
+                        max_number = response['max_number']
+                        notice = response['notice']
                         console.log(current_people)
-                        // let temphtml = `<li><span class="gTerm">${date}</span><span class="gBar" style="height:${percent}%"><span>${percent}%</span></span></li>`
-                        $('#current').text(current_people+" / 12명")
+                        $('#current').text(current_people+" / "+max_number+"명")
                         $('#cur_time').text(current_time+ " 기준")
-                        chart((current_people/12)*100)
+                        chart((current_people/max_number)*100)
+
+                        $('#exampleFormControlInput1').val(notice['notice_head1'])
+                        $('#exampleFormControlTextarea1').val(notice['notice_content1'])
+                        $('#exampleFormControlInput2').val(notice['notice_head2'])
+                        $('#exampleFormControlTextarea2').val(notice['notice_content2'])
+                        $('#exampleFormControlInput3').val(notice['notice_head3'])
+                        $('#exampleFormControlTextarea3').val(notice['notice_content3'])
+                        $('#exampleFormControlInput4').val(notice['notice_head4'])
+                        $('#exampleFormControlTextarea4').val(notice['notice_content4'])
+                        $('#exampleFormControlInput5').val(notice['notice_head5'])
+                        $('#exampleFormControlTextarea5').val(notice['notice_content5'])
+
+                        let temphtml = `<div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            ${notice['notice_head1']}
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            ${notice['notice_content1']}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            ${notice['notice_head2']}
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            ${notice['notice_content2']}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            ${notice['notice_head3']}
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            ${notice['notice_content4']}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseOne">
+                            ${notice['notice_head4']}
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            ${notice['notice_content5']}
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            ${notice['notice_head5']}
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>`
+                        $('#accordionExample').empty()
+                        $('#accordionExample').append(temphtml)
                     }
                 })
             }
@@ -462,107 +505,69 @@
         </p>
 
         <div id="container1">
-            <ul class="list">
-                <li>
-                    <input
-                            type="radio"
-                            name="list"
-                            class="list-checkbox"
-                            id="list-input1"
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            공지사항!
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingTwo">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            샤워실 이용 제한 안내
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            영업시간 조정: 09:00 ~ 21:00
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseOne">
+                            이것만은 꼭 지켜주세요!
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            전화번호 및 연락처
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-                    />
-                    <label for="list-input1" class="title">공지사항!</label>
-                    <div class="desc">
-                        <div>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
-                            quam alias veritatis esse deserunt veniam explicabo sunt eligendi,
-                            eaque perferendis, doloremque omnis delectus distinctio incidunt
-                            adipisci. Sit distinctio vero dolore. Lorem ipsum dolor sit, amet
-                            consectetur adipisicing elit. Quasi molestias, delectus doloremque
-                            reprehenderit excepturi natus non error totam veritatis aut odit,
-                            aperiam repellat similique suscipit nesciunt praesentium dicta,
-                            inventore dignissimos?
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <input
-                            type="radio"
-                            name="list"
-                            class="list-checkbox"
-                            id="list-input2"
-                    />
-                    <label for="list-input2" class="title">샤워실 이용 제한 안내</label>
-                    <div class="desc">
-                        <div>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
-                            aperiam autem neque nulla, explicabo pariatur quas, quis facere
-                            magnam inventore praesentium temporibus laudantium. Iure illo saepe
-                            earum at labore. Ducimus? Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Doloremque porro vel cum ipsa tempore, nemo fugit
-                            earum sequi quidem natus? Blanditiis quibusdam ab ullam numquam
-                            laborum, repellat obcaecati sed dolore!
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <input
-                            type="radio"
-                            name="list"
-                            class="list-checkbox"
-                            id="list-input3"
-                    />
-                    <label for="list-input3" class="title">영업시간 조정: 09:00 ~ 21:00</label>
-                    <div class="desc">
-                        <div>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
-                            aperiam autem neque nulla, explicabo pariatur quas, quis facere
-                            magnam inventore praesentium temporibus laudantium. Iure illo saepe
-                            earum at labore. Ducimus?
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <input
-                            type="radio"
-                            name="list"
-                            class="list-checkbox"
-                            id="list-input4"
-                    />
-                    <label for="list-input4" class="title">이것만은 꼭 지켜주세요!</label>
-                    <div class="desc">
-                        <div>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
-                            aperiam autem neque nulla, explicabo pariatur quas, quis facere
-                            magnam inventore praesentium temporibus laudantium. Iure illo saepe
-                            earum at labore. Ducimus? Lorem ipsum dolor sit amet consectetur
-                            adipisicing elit. Ea quas ratione velit, cupiditate saepe vero
-                            quisquam quod praesentium natus, aliquam sed qui provident incidunt
-                            voluptatem ducimus voluptatibus. Maxime, sit tempora.
-                        </div>
-                    </div>
-                </li>
-                <li>
-                    <input
-                            type="radio"
-                            name="list"
-                            class="list-checkbox"
-                            id="list-input5"
-                    />
-                    <label for="list-input5" class="title">전화번호 및 연락처</label>
-                    <div class="desc">
-                        <div>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet
-                            aperiam autem neque nulla, explicabo pariatur quas, quis facere
-                            magnam inventore praesentium temporibus laudantium. Iure illo saepe
-                            earum at labore. Ducimus? Lorem ipsum dolor sit amet consectetur,
-                            adipisicing elit. Temporibus a atque sed quod tempora suscipit sunt!
-                            Magni nesciunt velit optio porro illo necessitatibus minus, quisquam
-                            impedit totam at explicabo tenetur.
-                        </div>
-                    </div>
-                </li>
-            </ul>
         </div>
 
         <div id="container2">
@@ -570,31 +575,58 @@
                 <span class="input-group-text" id="inputGroup-sizing-default">현재 인원</span>
                 <input type="text" id="people-number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
             </div>
-            <button type="button" class="btn btn-success" onclick="people_input()">EDIT</button>
+            <div class="input-group mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-default2">최대 인원</span>
+                <input type="text" id="max-number" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+            </div>
+            <p style="text-align: center">
+            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="ABfitness">EDIT</button>
+            </p>
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">New message</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label" >Name:</label>
+                                    <input type="text" class="form-control" id="manager_name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">관장님 3대:</label>
+                                    <textarea class="form-control" id="manager_password"></textarea>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" onclick="people_input()">EDIT</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <script>
                 function people_input() {
                     people = $('#people-number').val()
-
-                    // if (korean_input == '') {
-                    //     alert('한국어 문장을 입력해주세요')
-                    //     $('#kor-text').focus()
-                    //     return;
-                    // } else if (eng_input == '') {
-                    //     alert('영어 문장을 입력해주세요')
-                    //     $('#eng-text').focus()
-                    //     return;
-                    // } else {
-                    //     korean_input_3 = $('#kor-text').val()
-                    //     eng_input_3 = $('#eng-text').val()
-                    //     reference_3 = $('#reference').val()
-                    // }
+                    manager_name = $('#manager_name').val()
+                    manager_password = $('#manager_password').val()
+                    max_number = $('#max-number').val()
+                    if (max_number == ''){
+                        max_number = -1
+                    }
 
                     $.ajax({
                         type: 'POST',
                         url: '/peopleinput',
                         data: {
-                            'people_give': people
+                            'people_give': people,
+                            'manager_name': manager_name,
+                            'manager_password': manager_password,
+                            'max_number': max_number
                         },
                         success: function (response) {
                             alert(response['msg'])
@@ -603,62 +635,144 @@
                     })
 
                 }
+
             </script>
-        </div>
 
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@mdo">Open modal for @mdo</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@fat">Open modal for @fat</button>
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" data-bs-whatever="@getbootstrap">Open modal for @getbootstrap</button>
 
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">New message</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form>
+            <p style="text-align: center">
+                <a class="btn btn-success" data-bs-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">공지글 수정하기</a>
+
+            </p>
+            <div class="row">
+                <div class="col">
+                    <div class="collapse multi-collapse" id="multiCollapseExample1">
+                        <div class="card card-body">
                             <div class="mb-3">
-                                <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                <input type="text" class="form-control" id="recipient-name">
+                                <label for="exampleFormControlInput1" class="form-label">제목</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
                             </div>
                             <div class="mb-3">
-                                <label for="message-text" class="col-form-label">Message:</label>
-                                <textarea class="form-control" id="message-text"></textarea>
+                                <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
                             </div>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Send message</button>
+                        </div>
+                        <div class="card card-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">제목</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput2" placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea2" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="card card-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">제목</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput3" placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea3" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="card card-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">제목</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput4" placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea4" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="card card-body">
+                            <div class="mb-3">
+                                <label for="exampleFormControlInput1" class="form-label">제목</label>
+                                <input type="email" class="form-control" id="exampleFormControlInput5" placeholder="name@example.com">
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlTextarea1" class="form-label">내용</label>
+                                <textarea class="form-control" id="exampleFormControlTextarea5" rows="3"></textarea>
+                            </div>
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal2" data-bs-whatever="ABfitness">EDIT</button>
+                            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel2">확인 절차</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <form>
+                                                <div class="mb-3">
+                                                    <label for="recipient-name2" class="col-form-label" >Name:</label>
+                                                    <input type="text" class="form-control" id="manager_name2">
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="message-text2" class="col-form-label">관장님 3대:</label>
+                                                    <textarea class="form-control" id="manager_password2"></textarea>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary" onclick="notice_input()">EDIT</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
+
             </div>
         </div>
 
-        <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
-        </button>
+        <script>
+            function notice_input() {
+                manager_name2 = $('#manager_name2').val()
+                manager_password2 = $('#manager_password2').val()
+                notice_head1=$('#exampleFormControlInput1').val()
+                notice_content1=$('#exampleFormControlTextarea1').val()
+                notice_head2=$('#exampleFormControlInput2').val()
+                notice_content2=$('#exampleFormControlTextarea2').val()
+                notice_head3=$('#exampleFormControlInput3').val()
+                notice_content3=$('#exampleFormControlTextarea3').val()
+                notice_head4=$('#exampleFormControlInput4').val()
+                notice_content4=$('#exampleFormControlTextarea4').val()
+                notice_head5=$('#exampleFormControlInput5').val()
+                notice_content5=$('#exampleFormControlTextarea5').val()
 
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        ...
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div>
-                </div>
-            </div>
+                $.ajax({
+                    type: 'POST',
+                    url: '/noticeinput',
+                    data: {
+                        'manager_name': manager_name2,
+                        'manager_password': manager_password2,
+                        'notice_head1':notice_head1,
+                        'notice_content1':notice_content1,
+                        'notice_head2':notice_head2,
+                        'notice_content2':notice_content2,
+                        'notice_head3':notice_head3,
+                        'notice_content3':notice_content3,
+                        'notice_head4':notice_head4,
+                        'notice_content4':notice_content4,
+                        'notice_head5':notice_head5,
+                        'notice_content5':notice_content5
+                    },
+                    success: function (response) {
+                        alert(response['msg'])
+                        get_people()
+                    }
+                })
+
+            }
+
+        </script>
+
         </div>
+
     </body>
 </html>
