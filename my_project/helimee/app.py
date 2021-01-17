@@ -3,15 +3,23 @@ from pymongo import MongoClient
 import time
 import json
 from bson import ObjectId
+from pytz import timezone
+from datetime import datetime
 
 app = Flask(__name__)
 
-client = MongoClient('localhost', 27017)  # mongoDB는 27017 포트로 돌아갑니다.
+client = MongoClient('mongodb://test:test@15.165.29.169', 27017)  # mongoDB는 27017 포트로 돌아갑니다#localhost .mongodb://test:test@15.165.29.169
 db = client.helimee  # 'dbsparta'라는 이름의 db를 만듭니다.
 
 ## HTML을 주는 부분
 @app.route('/')
 def home():
+    return render_template('page.html')
+
+@app.route('/admin')
+def admin():
+
+
     return render_template('page.html')
 
 @app.route('/page_input')
@@ -31,13 +39,15 @@ def test_post():
     max_number = request.form['max_number']
     user_info = list(db.user.find({'name':manager_name}))
     if max_number != '-1':
-        db.abfitness.insert_one({'max_number_find':'find','max_number':max_number})
+        db.abfitness.update_one({'max_number_find':'find'},{'$set':{'max_number':max_number}})
     if len(user_info) == 0:
         msg = "이름을 확인해주세요"
     elif user_info[-1]['password'] == manager_password:
-        now = time.localtime()
-        now1 = "%04d/%02d/%02d %02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min)
-        date = "%04d/%02d/%02d" % (now.tm_year, now.tm_mon, now.tm_mday)
+        now =  datetime.now(timezone('Asia/Seoul'))  #time.localtime()
+        date = now.strftime("%Y/%m/%d")
+        # now1 = "%04d/%02d/%02d %02d:%02d" % (now.tm_year, now.tm_mon, now.tm_mday, now.tm_hour, now.tm_min)
+        now1 = now.strftime('%Y/%m/%d %H:%M')
+        # date = "%04d/%02d/%02d" % (now.tm_year, now.tm_mon, now.tm_mday)
         data = {'date': date,'people': people, 'time':now1}
         db.abfitness.insert_one(data)
         msg = "현재 인원이 업데이트 되었습니다."
@@ -78,8 +88,9 @@ def notice_post():
 
 @app.route('/peopleget', methods=['GET'])
 def get():
-    now = time.localtime()
-    date = "%04d/%02d/%02d" % (now.tm_year, now.tm_mon, now.tm_mday)
+    now =  datetime.now(timezone('Asia/Seoul'))
+    # date = "%04d/%02d/%02d" % (now.tm_year, now.tm_mon, now.tm_mday)
+    date = now.strftime("%Y/%m/%d")
     people_list = list(db.abfitness.find({'date':date}))
     max_list = list(db.abfitness.find({'max_number_find': 'find'}))
     people_data = people_list[-1]

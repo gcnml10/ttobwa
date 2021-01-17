@@ -399,6 +399,7 @@
                     url: '/peopleget',
                     data: {},
                     success: function (response) {
+                        console.log(response)
                         current_people = response['current_people']
                         current_time = response['current_time']
                         max_number = response['max_number']
