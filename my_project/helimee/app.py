@@ -12,7 +12,7 @@ client = MongoClient('mongodb://test:test@15.165.29.169', 27017)  # mongoDB는 2
 db = client.helimee  # 'dbsparta'라는 이름의 db를 만듭니다.
 
 ## HTML을 주는 부분
-@app.route('/')
+@app.route('/abfitness')
 def home():
     return render_template('page.html')
 
@@ -31,7 +31,7 @@ def about_page():
     return render_template('about_page.html')
 
 ## 인원수 입력하는 부분
-@app.route('/peopleinput', methods=['POST'])
+@app.route('/abfitness/peopleinput', methods=['POST'])
 def test_post():
     people = request.form['people_give']
     manager_name = request.form['manager_name']
@@ -57,7 +57,7 @@ def test_post():
     return jsonify({'result': 'success', 'msg': msg})
 
 # 공지글 수정
-@app.route('/noticeinput', methods=['POST'])
+@app.route('/abfitness/noticeinput', methods=['POST'])
 def notice_post():
     manager_name = request.form['manager_name']
     manager_password = request.form['manager_password']
@@ -86,7 +86,7 @@ def notice_post():
         msg = "비밀번호가 일치하지 않습니다."
     return jsonify({'result': 'success', 'msg': msg})
 
-@app.route('/peopleget', methods=['GET'])
+@app.route('/abfitness/peopleget', methods=['GET'])
 def get():
     now =  datetime.now(timezone('Asia/Seoul'))
     # date = "%04d/%02d/%02d" % (now.tm_year, now.tm_mon, now.tm_mday)
@@ -98,6 +98,8 @@ def get():
     notice = list(db.abfitness.find({'notice':"notice"}))[-1]
     del notice['_id']
     print(people_data['people'],people_data['time'],max_number['max_number'])
+    new = list(db.user.find({'log': 'log'}))[-1]['count'] + 1
+    db.user.update_one({'log': 'log'}, {'$set': {'count': new}})
     return jsonify({'result': 'success', 'current_people': people_data['people'],'current_time': people_data['time'],'max_number':max_number['max_number'], 'notice':notice})
 
 if __name__ == '__main__':

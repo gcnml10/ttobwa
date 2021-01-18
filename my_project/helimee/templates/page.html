@@ -22,6 +22,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
+        <!--        ogtag -->
+        <meta property="og:title" content="헬스장 현재 인원 수 알려드립니다ㅏㅏ"/>
+        <meta property="og:description"
+              content='현재 인원은 기준 시간의 인원으로 변동될 수 있어요요. 최대 인원 및 현재 인원, 공지글이 있습니다. '/>
+       <meta property="og:image" content="{{ url_for('static', filename='ogimage_1.jpg') }}"/>
+<!--        <meta name="google-site-verification" content="PpZMg1u1PMHzdbz6cclg1EQlGyfK8IbLNRjUQxkwUPo" />-->
+
         <!--스타일-->
         <style>
             *{
@@ -347,10 +354,14 @@
 
         <!--         네비게이션 바-->
 
+        <style>
+            .navbar{
+                padding: .5rem 1rem;
+            }
+        </style>
 
-
-        <nav class="navbar navbar-light" style="background-color: #eeeeee;">
-            <a class="navbar-brand" href="/" style="font-size: 2.3em">헬리미</a>
+        <nav class="navbar navbar-light" style="background-color: #eeeeee;" style="padding-left: 1rem; padding-right: 1rem ">
+            <a class="navbar-brand" href="/abfitness" style="font-size: 2.3em">헬리미</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation" style="box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -358,7 +369,7 @@
             <div class="collapse navbar-collapse" id="navbarColor03">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="/">Home
+                        <a class="nav-link" href="/abfitness">Home
                             <span class="sr-only"></span>
                         </a>
                     </li>
@@ -381,8 +392,8 @@
 <!--                    </li>-->
                 </ul>
                 <form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
-                    <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+                    &nbsp;<input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    &nbsp;<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
                 </form>
             </div>
         </nav>
@@ -396,7 +407,7 @@
                 $('#cur_time').empty()
                 $.ajax({
                     type: 'GET',
-                    url: '/peopleget',
+                    url: '/abfitness/peopleget',
                     data: {},
                     success: function (response) {
                         console.log(response)
@@ -622,7 +633,7 @@
 
                     $.ajax({
                         type: 'POST',
-                        url: '/peopleinput',
+                        url: '/abfitness/peopleinput',
                         data: {
                             'people_give': people,
                             'manager_name': manager_name,
@@ -748,7 +759,7 @@
 
                 $.ajax({
                     type: 'POST',
-                    url: '/noticeinput',
+                    url: '/abfitness/noticeinput',
                     data: {
                         'manager_name': manager_name2,
                         'manager_password': manager_password2,
