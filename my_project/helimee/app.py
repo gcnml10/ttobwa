@@ -19,7 +19,6 @@ def home():
 @app.route('/admin')
 def admin():
 
-
     return render_template('page.html')
 
 @app.route('/page_input')
@@ -91,16 +90,25 @@ def get():
     now =  datetime.now(timezone('Asia/Seoul'))
     # date = "%04d/%02d/%02d" % (now.tm_year, now.tm_mon, now.tm_mday)
     date = now.strftime("%Y/%m/%d")
+    today_log = list(db.log.find({'date':date}))
+    if len(today_log) == 0:
+        db.log.insert_one({'date':date,'count':1})
+    else:
+        new_count = today_log[-1]['count'] + 1
+        db.log.update_one({'date':date},{'$set':{'count':new_count}})
     people_list = list(db.abfitness.find({'date':date}))
     max_list = list(db.abfitness.find({'max_number_find': 'find'}))
-    people_data = people_list[-1]
     max_number = max_list[-1]
     notice = list(db.abfitness.find({'notice':"notice"}))[-1]
     del notice['_id']
-    print(people_data['people'],people_data['time'],max_number['max_number'])
     new = list(db.user.find({'log': 'log'}))[-1]['count'] + 1
     db.user.update_one({'log': 'log'}, {'$set': {'count': new}})
-    return jsonify({'result': 'success', 'current_people': people_data['people'],'current_time': people_data['time'],'max_number':max_number['max_number'], 'notice':notice})
+    if len(people_list) == 0:
+        return jsonify({'result': 'success', 'current_people': '-','current_time': '입력 전입니다.','max_number':max_number['max_number'], 'notice':notice})
+    people_data = people_list[-1]
+    print(people_data['people'], people_data['time'], max_number['max_number'])
+
+    return jsonify({'result': 'success', 'current_people': people_data['people'],'current_time': people_data['time']+' 기준','max_number':max_number['max_number'], 'notice':notice})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

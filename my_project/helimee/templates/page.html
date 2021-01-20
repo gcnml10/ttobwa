@@ -22,6 +22,8 @@
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
 
+
+
         <!--        ogtag -->
         <meta property="og:title" content="헬스장 현재 인원 수 알려드립니다ㅏㅏ"/>
         <meta property="og:description"
@@ -34,6 +36,7 @@
             *{
                 font-family: 'Jua', sans-serif;
             }
+
 
             .pie-chart {
                 background: #CCCCCC;
@@ -289,7 +292,16 @@
         <!--스크립트-->
         <script>
             function chart(num){
-                draw(num, '.pie-chart1', '#fa981e');
+                if (num<39) {    //15명
+                    draw(num, '.pie-chart1', '#15b02f');
+                }
+                else if (num<65){   // 25명
+                    draw(num, '.pie-chart1', '#366fd1');
+                }
+                else if (num >= 65){  // 25명 이상
+                    draw(num, '.pie-chart1', '#fa981e');
+                }
+                // draw(num, '.pie-chart1', '#fa981e');
             }
 
             function draw(max, classname, colorname){
@@ -417,7 +429,7 @@
                         notice = response['notice']
                         console.log(current_people)
                         $('#current').text(current_people+" / "+max_number+"명")
-                        $('#cur_time').text(current_time+ " 기준")
+                        $('#cur_time').text(current_time)
                         chart((current_people/max_number)*100)
 
                         $('#exampleFormControlInput1').val(notice['notice_head1'])
@@ -463,7 +475,7 @@
                     </h2>
                     <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            ${notice['notice_content4']}
+                            ${notice['notice_content3']}
                         </div>
                     </div>
                 </div>
@@ -475,7 +487,7 @@
                     </h2>
                     <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            ${notice['notice_content5']}
+                            ${notice['notice_content4']}
                         </div>
                     </div>
                 </div>
@@ -487,7 +499,7 @@
                     </h2>
                     <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                            ${notice['notice_content5']}
                         </div>
                     </div>
                 </div>`
