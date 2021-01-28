@@ -49,7 +49,8 @@ def test_post():
         # date = "%04d/%02d/%02d" % (now.tm_year, now.tm_mon, now.tm_mday)
         data = {'date': date,'people': people, 'time':now1}
         db.abfitness.insert_one(data)
-        msg = "현재 인원이 업데이트 되었습니다."
+        check_num = list(db.log.find({'date':date}))[-1]['count']
+        msg = "현재 인원이 업데이트 되었습니다. "+"\n" +"오늘 조회한 횟수: {}".format(check_num)
     else:
         msg = "비밀번호가 일치하지 않습니다."
 
